@@ -6,6 +6,11 @@
                 <div>
                     @auth
                     <p>Welcome, {{ auth()->user()->name }}!</p>
+
+                    <p class="mt-8">Your current clubs: </p>
+                    @foreach (auth()->user()->clubs as $club)
+                    <li>{{ ucwords($club->name) }}</li>
+                    @endforeach
                     @else
                     <p>Please log in to view content.</p>
                     @endauth
