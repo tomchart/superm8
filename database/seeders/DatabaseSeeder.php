@@ -14,6 +14,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(20)->create();
+        \App\Models\Club::factory(5)->create();
+
+        $clubs = \App\Models\Club::all();
+
+        \App\Models\User::all()->each(function ($user) use ($clubs) {
+            $user->clubs()->attach(
+                $clubs->random(rand(1, 3))->pluck('id')->toArray()
+            );
+        });
     }
 }

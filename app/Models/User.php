@@ -36,4 +36,9 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+
+    public function clubs()
+    {
+        return $this->belongsToMany(Club::class);
+    }
 }
