@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ClubController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,3 +21,8 @@ Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
 // Logout
 Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth');
+
+
+//// Clubs
+// View detail page
+Route::get('/club/{club:slug}', [ClubController::class, 'show'])->middleware('auth');
