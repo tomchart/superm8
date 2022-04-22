@@ -16,15 +16,15 @@
     <section class="px-6 py-6">
         <nav class="md:flex md:justify-between md:items-center">
             <div>
-                <a href="/" class="font-semibold underline italic text-xl">superm8</a>
+                <a href="/" class="font-semibold italic text-2xl hover:underline">superm8</a>
             </div>
             <div class="mt-8 md:mt-0 mr-6 flex items-center space-x-6">
                 @auth
-                <a href="/account">My Account</a>
-                <a href="/logout">Log out</a>
+                <a href="/account" class="hover:underline">My Account</a>
+                <a href="/logout" class="hover:underline">Log out</a>
                 @else
-                <a href="/register">Register</a>
-                <a href="/login">Login</a>
+                <a href="/login" class="hover:underline">Login</a>
+                <a href="/register" class="hover:underline">Register</a>
                 @endauth
             </div>
 
