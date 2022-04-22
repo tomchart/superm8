@@ -21,6 +21,7 @@
             <div class="mt-8 md:mt-0 mr-6 flex items-center space-x-6">
                 @auth
                 <a href="/account">My Account</a>
+                <a href="/logout">Log out</a>
                 @else
                 <a href="/register">Register</a>
                 <a href="/login">Login</a>
