@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -12,6 +14,14 @@ class RegisterController extends Controller
 
     public static function store()
     {
-        ddd(request()->all());
+        $attributes = request()->validate([
+            'name' => ['required', 'max:255'],
+            'username' => ['required', 'min:3', 'max:50', Rule::unique('users', 'username')],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => ['required', 'min:8', 'max:128'],
+        ]);
+        $user = User::create($attributes);
+        auth()->login($user);
+        return redirect('/');
     }
 }
