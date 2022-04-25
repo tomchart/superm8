@@ -5,6 +5,7 @@
         <x-sidebar.link url="home" str="Home"></x-sidebar.link>
         <x-sidebar.link url="profile/{{ auth()->user()->username }}" str="My Profile"></x-sidebar.link>
         <x-sidebar.link url="club" str="Create a new club"></x-sidebar.link>
+        <x-sidebar.link url="redeem" str="Redeem an invite"></x-sidebar.link>
         <p class="mt-4 mb-2">Your current clubs: </p>
 
         @foreach (auth()->user()->clubs as $club)

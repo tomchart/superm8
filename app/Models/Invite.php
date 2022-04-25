@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Club extends Model
+class Invite extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ['code', 'club_id'];
 
-    public function users()
+    public function club()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(Club::class);
     }
 }
