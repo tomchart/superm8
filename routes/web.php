@@ -25,4 +25,4 @@ Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth')
 
 //// Clubs
 // View detail page
-Route::get('/club/{club:slug}', [ClubController::class, 'show'])->middleware('auth');
+Route::get('/club/{club:slug}', [ClubController::class, 'show'])->middleware(['auth', 'member']);
