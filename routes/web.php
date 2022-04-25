@@ -30,6 +30,8 @@ Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth')
 //// Clubs
 // View detail page
 Route::get('/club/{club:slug}', [ClubController::class, 'show'])->middleware(['auth', 'member']);
+Route::get('/club', [ClubController::class, 'create'])->middleware('auth');
+Route::post('/club', [ClubController::class, 'store'])->middleware('auth');
 
 
 //// Account

@@ -9,6 +9,13 @@ class Club extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner');
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class);

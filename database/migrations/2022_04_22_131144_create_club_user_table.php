@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('club_user', function (Blueprint $table) {
-            $table->integer('club_id');
-            $table->integer('user_id');
+            $table->integer('club_id')->constrained()->cascadeOnDelete();
+            $table->integer('user_id')->constrained()->cascadeOnDelete();
         });
     }
 
