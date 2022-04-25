@@ -4,11 +4,18 @@
             <x-panel>
                 <form method="POST" action="/register" class="mt-10">
                     @csrf
+                    <x-form.label name="name" required />
                     <x-form.input name="name" required />
+
+                    <x-form.label name="username" required />
                     <x-form.input name="username" required />
+
+                    <x-form.label name="email" required />
                     <x-form.input name="email" type="email" required />
+
+                    <x-form.label name="password" required />
                     <x-form.input name="password" type="password" autocomplete="new-password" required />
-                    <x-form.button>Register</x-form.button>
+                    <x-form.button>register</x-form.button>
                 </form>
             </x-panel>
         </main>

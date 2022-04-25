@@ -4,9 +4,12 @@
             <x-panel>
                 <form method="POST" action="/login" class="mt-10">
                     @csrf
+                    <x-form.label name="username" required />
                     <x-form.input name="username" autocomplete="username" required />
+
+                    <x-form.label name="password" required />
                     <x-form.input name="password" type="password" autocomplete="new-password" required />
-                    <x-form.button>Log in</x-form.button>
+                    <x-form.button>log in</x-form.button>
                 </form>
             </x-panel>
         </main>
