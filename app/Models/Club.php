@@ -11,11 +11,6 @@ class Club extends Model
 
     protected $guarded = [];
 
-    public function owner()
-    {
-        return $this->belongsTo(User::class, 'owner');
-    }
-
     public function users()
     {
         return $this->belongsToMany(User::class);
