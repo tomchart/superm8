@@ -1,5 +1,5 @@
-<div class="lg:grid lg:grid-cols-12 px-6 py-8">
-    <x-panel class="col-span-3 lg:pt-14 mb-10 mr-4">
+<x-sidebar.main>
+    <x-slot:side>
         @auth
         <p>Welcome, {{ auth()->user()->name }}!</p>
         <x-sidebar.link url="home" str="Home"></x-sidebar.link>
@@ -16,8 +16,7 @@
         <p>Please log in to view content.</p>
 
         @endauth
-    </x-panel>
-    <x-panel class="col-span-9 lg:pt-14 mb-10">
-        {{ $slot }}
-    </x-panel>
-</div>
+    </x-slot:side>
+
+    {{ $slot }}
+</x-sidebar.main>
