@@ -20,4 +20,9 @@ class Club extends Model
     {
         return $this->belongsTo(User::class, 'owner', 'id');
     }
+
+    public function watchlists()
+    {
+        return $this->hasMany(Watchlist::class);
+    }
 }
