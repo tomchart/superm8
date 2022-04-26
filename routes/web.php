@@ -5,6 +5,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\InviteController;
+use App\Http\Controllers\AdminClubController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,9 +29,19 @@ Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth')
 //// Clubs
 // View detail page
 Route::get('/club/{club:slug}', [ClubController::class, 'show'])->middleware(['auth', 'member']);
-// View new club page & create new club
-Route::get('/club', [ClubController::class, 'create'])->middleware('auth');
-Route::post('/club', [ClubController::class, 'store'])->middleware('auth');
+// Index current clubs
+Route::get('/clubs', [ClubController::class, 'index'])->middleware('auth');
+
+
+//// Club administration
+// Create new club
+Route::get('/club', [AdminClubController::class, 'create'])->middleware('auth');
+Route::post('/club', [AdminClubController::class, 'store'])->middleware('auth');
+// Edit club
+Route::get('/admin/club/{club:id}/edit', [AdminClubController::class, 'edit'])->middleware(['auth', 'owner']);
+Route::patch('/admin/club/{club:id}', [AdminClubController::class, 'update'])->middleware(['auth', 'owner']);
+// Delete club
+Route::delete('/admin/club/{club:id}', [AdminClubController::class, 'destroy'])->middleware(['auth', 'owner']);
 
 
 //// Invites
