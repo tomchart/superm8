@@ -14,15 +14,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(20)->create();
-        \App\Models\Club::factory(5)->create();
 
-        $clubs = \App\Models\Club::all();
+        // create 5 clubs
+        \App\Models\Club::factory(5)->create()->each(function ($club) {
+            // Seed the relation with 10 users
+            $users = \App\Models\User::factory(10)->make();
+            $club->users()->saveMany($users);
 
-        \App\Models\User::all()->each(function ($user) use ($clubs) {
-            $user->clubs()->attach(
-                $clubs->random(rand(1, 3))->pluck('id')->toArray()
-            );
+            // Seed the relation with 3 watchlists
+            $watchlists = \App\Models\Watchlist::factory(3)->make();
+            $club->watchlists()->saveMany($watchlists);
+        });
+
+        // create 3 media types
+        \App\Models\MediaType::factory(3)->create()->each(function ($media_type) {
+            // seed the relation with 15 media rows
+            $media = \App\Models\Media::factory(15)->make();
+            $media->each(function ($media) use ($media_type) {
+                $media->type()->associate($media_type);
+                $media->save();
+            });
+        });
+
+
+        $watchlists = \App\Models\Watchlist::all();
+        $watchlists->each(function ($watchlist) {
+            $media = \App\Models\Media::inRandomOrder()->limit(7)->get();
+            $watchlist->media()->saveMany($media);
         });
     }
 }
