@@ -6,14 +6,12 @@ use App\Http\Controllers\ClubController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\InviteController;
 use App\Http\Controllers\AdminClubController;
+use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('homepage');
-});
-Route::get('/home', function () {
-    return view('homepage');
-});
+//// Homepage
+Route::get('/', [HomepageController::class, 'show']);
+Route::get('/home', [HomepageController::class, 'show']);
 
 //// Sessions
 // Register
