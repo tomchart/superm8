@@ -7,6 +7,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\InviteController;
 use App\Http\Controllers\AdminClubController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\WatchlistController;
 use Illuminate\Support\Facades\Route;
 
 //// Homepage
@@ -53,3 +54,10 @@ Route::post('/redeem', [InviteController::class, 'put'])->middleware(['auth']);
 //// Account
 // Show
 Route::get('/account', [AccountController::class, 'show'])->middleware('auth');
+
+
+//// Watchlist
+// Add media to Watchlist
+
+/////////// fix member middleware /////////// 
+Route::post('/watchlist/{club:id}', [WatchlistController::class, 'store'])->middleware(['auth']);
