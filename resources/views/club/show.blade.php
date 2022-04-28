@@ -34,7 +34,7 @@
                     <div class="lg:grid lg:grid-cols-12">
                         <div class="col-span-8">
                             <x-form.label name="add something" />
-                            <x-form.input name="input" required />
+                            <x-form.input name="name" required />
                         </div>
 
 

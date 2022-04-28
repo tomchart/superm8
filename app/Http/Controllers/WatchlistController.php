@@ -23,7 +23,7 @@ class WatchlistController extends Controller
 
     protected function findMediaIfExists(Request $request)
     {
-        $media_input_name = strtolower($request->input);
+        $media_input_name = strtolower($request->name);
         $media_input_type = $request->type_id;
         $media = Media::where('name', '=', $media_input_name)->where('type_id', '=', $media_input_type);
         if ($media->count() > 0) {
