@@ -27,9 +27,9 @@
         <x-watchlist.main>
 
             <x-slot name="input">
-                <form method="POST" action='/club/watchlist/{{ $club->id }}/' enctype="multipart/form-data">
+                <form method="POST" action='/watchlist/{{ $club->id }}/' enctype="multipart/form-data">
                     @csrf
-                    @method('PATCH')
+                    @method('POST')
 
                     <div class="lg:grid lg:grid-cols-12">
                         <div class="col-span-8">
@@ -37,22 +37,43 @@
                             <x-form.input name="input" required />
                         </div>
 
+
+
                         <div class="inline-flex col-span-4">
-                            <div class="relative bg-gray-200 rounded-xl space-y-2 lg:space-y-0 lg:space-x-4 block text-left px-3 col-span-2 ml-6 mr-6 mt-12 mb-6 py-2">
-                                <p>need to redo dropdown</p>
-                            </div>
+                            <select name="type_id" id="type_id" class="mt-4 ml-4 mr-4">
+                                @php
+                                $media_types = \App\Models\MediaType::all();
+                                @endphp
+
+                                @foreach ($media_types as $type)
+                                <option value="{{ $type->id }}">{{ ucwords($type->type) }}</option>
+                                @endforeach
+                            </select>
+
+                            <select name="watchlist_id" id="watchlist_id" class="mt-4 ml-4 mr-4">
+                                @php
+                                $watchlists = $club->watchlists;
+                                @endphp
+
+                                @foreach ($watchlists as $watchlist)
+                                <option value="{{ $watchlist->id }}">{{ ucwords($watchlist->name) }}</option>
+                                @endforeach
+                            </select>
 
                             <x-form.button>add</x-form.button>
                         </div>
+
                     </div>
                 </form>
             </x-slot>
 
             <x-slot name="list">
-                @foreach ($club->watchlists as $watchlists)
-                @foreach ($watchlists->media as $media)
-                <x-watchlist.item class="mt-8">{{ $media->name }}</x-watchlist.item>
+                @foreach ($club->watchlists as $watchlist)
+                <h3 class="underline font-semibold mb-2">{{ $watchlist->name }}</h3>
+                @foreach ($watchlist->media as $media)
+                <x-watchlist.item class="mt-8">{{ ucwords($media->name) }}</x-watchlist.item>
                 @endforeach
+                <hr class="mt-6 mb-6">
                 @endforeach
             </x-slot>
 
