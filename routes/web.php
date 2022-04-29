@@ -58,6 +58,4 @@ Route::get('/account', [AccountController::class, 'show'])->middleware('auth');
 
 //// Watchlist
 // Add media to Watchlist
-
-/////////// fix member middleware /////////// 
-Route::post('/watchlist/{club:id}', [WatchlistController::class, 'store'])->middleware(['auth', 'media.exists']);
+Route::post('/watchlist/{club:id}', [WatchlistController::class, 'store'])->middleware(['auth', 'media.exists', 'member']);
