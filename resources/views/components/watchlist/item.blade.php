@@ -12,6 +12,6 @@ if ($status) $classes .= ' line-through';
         <p class="{{ $classes }}">{{ $media->name }}</p>
     </div>
     <div class="col-span-1">
-        <x-watchlist.watched :watchlist="$watchlist" :media="$media" :status="$status" :club="$club" />
+        <x-watchlist.watched :watchlist="$watchlist" :media="$media" :status="$status" />
     </div>
 </div>
