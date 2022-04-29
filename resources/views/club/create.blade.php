@@ -5,8 +5,9 @@
             <x-form.label name="club name" required />
             <x-form.input name="name" required />
 
-            <x-form.label name="slug" required />
-            <x-form.input name="slug" required />
+            @error('club')
+            <span class="text-xs text-red-500">{{ $message }}</span>
+            @enderror
 
             <x-form.button>create club</x-form.button>
         </form>
