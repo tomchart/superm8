@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Club;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Validation\Rule;
 
 class AdminClubController extends Controller
 {
@@ -15,51 +14,66 @@ class AdminClubController extends Controller
 
     public function store()
     {
+        $slug = $this->createSlug(request('name'));
+
         $attributes = array_merge($this->validateClub(), [
             'owner' => auth()->id(),
         ]);
 
+        $attributes = array_merge($attributes, [
+            'slug' => $slug,
+        ]);
+
         if (!($attributes)) {
-            throw ValidationException::withMessages([
-                'name' => "Your club name could not be verified",
-                'slug' => "Your club's slug could not be verified",
+            throw validationexception::withmessages([
+                'name' => "your club name could not be verified",
             ]);
         }
 
-        $club = Club::create($attributes);
+        $club = club::create($attributes);
         auth()->user()->clubs()->attach($club);
 
         return redirect('/club/' . $club->slug);
     }
 
-    public function edit(Club $club)
+    public function edit(club $club)
     {
         return view('club.edit', [
             'club' => $club,
         ]);
     }
 
-    public function update(Club $club)
+    public function update(club $club)
     {
-        $attributes = $this->validateClub($club);
+        $attributes = $this->validateclub($club);
 
         $club->update($attributes);
 
         return redirect('/club/' . $club->slug);
     }
 
-    public function destroy(Club $club)
+    public function destroy(club $club)
     {
         $club->delete();
-        return view('homepage');
+        return back()->with('success', 'Club deleted successfully');
     }
 
-    protected function validateClub(?Club $club = null): array
+    protected function createSlug(string $club_name)
+    {
+        $slug = str_replace([' '], ['-'], strtolower($club_name));
+        if (Club::where('slug', '=', $slug)->count() > 0) {
+            throw ValidationException::withMessages([
+                'club' => 'Your club slug is already in use (does a club with this name already exist?)',
+            ]);
+        }
+        return $slug;
+    }
+
+    protected function validateClub(?club $club = null): array
     {
         $club ??= new Club();
         return request()->validate([
             'name' => ['required', 'max:255'],
-            'slug' => ['required', 'max:255', Rule::unique('clubs', 'slug')->ignore($club->id)],
         ]);
     }
 }
