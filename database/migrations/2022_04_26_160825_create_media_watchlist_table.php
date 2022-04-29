@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('media_watchlist', function (Blueprint $table) {
             $table->integer('media_id');
             $table->integer('watchlist_id');
+            $table->boolean('watched')->default(false);
             $table->timestamps();
         });
     }
