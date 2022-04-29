@@ -1,4 +1,7 @@
 <div class="mt-10">
+    <h2 class="font-bold underline text-lg">create new watchlist</h2>
+    {{ $new }}
+
     <h2 class="font-bold underline text-lg">add to list</h2>
     {{ $input }}
 
