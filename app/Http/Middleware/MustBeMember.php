@@ -18,9 +18,9 @@ class MustBeMember
     public function handle(Request $request, Closure $next)
     {
         $clubs = $request->user()->clubs;
-        $request_slug = $request->route()->parameter('club')->slug;
+        $request_club = $request->club;
 
-        if ($clubs->contains('slug', $request_slug)) {
+        if ($clubs->contains($request_club)) {
             return $next($request);
         } else {
             return redirect(RouteServiceProvider::HOME);
