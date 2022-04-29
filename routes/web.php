@@ -7,6 +7,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\InviteController;
 use App\Http\Controllers\AdminClubController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\MediaWatchlistController;
 use App\Http\Controllers\WatchlistController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,4 +61,11 @@ Route::get('/account', [AccountController::class, 'show'])->middleware('auth');
 // Create new watchlist
 Route::post('/watchlist/{club:id}/create', [WatchlistController::class, 'create'])->middleware(['auth', 'member']);
 // Add media to Watchlist
-Route::post('/watchlist/{club:id}', [WatchlistController::class, 'store'])->middleware(['auth', 'media.exists', 'member']);
+Route::post('/watchlist/{club:id}', [WatchlistController::class, 'update'])->middleware(['auth', 'media.exists', 'member']);
+
+
+//// Media watchlist
+// Mark as watched
+
+// fix middleware again
+Route::patch('/watchlist/{watchlist:id}/{media:id}', [MediaWatchlistController::class, 'update'])->middleware(['auth']);

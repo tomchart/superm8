@@ -25,9 +25,9 @@ class WatchlistController extends Controller
         return back()->with('success', 'Watchlist created for club.');
     }
 
-    public function store(Watchlist $watchlist)
+    public function update(Watchlist $watchlist)
     {
         $watchlist->media()->attach(request('media'), ['watchlist_id' => request('watchlist_id')]);
-        return back();
+        return redirect(url()->previous() . '#list');
     }
 }
