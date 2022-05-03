@@ -21,6 +21,11 @@
                 @endforeach
             </select>
 
+            <!-- this doesnt work -->
+            @error ('error')
+            <span class="text-xs text-red-500">{{ $message }}</span>
+            @enderror
+
             <x-form.button>add</x-form.button>
         </div>
 
