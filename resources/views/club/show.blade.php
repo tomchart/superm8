@@ -26,76 +26,15 @@
 
         <x-watchlist.main>
             <x-slot name="new">
-                <form method="POST" action='/watchlist/{{ $club->id }}/create' enctype="multipart/form-data">
-                    @csrf
-                    @method('POST')
-
-                    <div class="lg:grid lg:grid-cols-12">
-                        <div class="col-span-8">
-                            <x-form.label name="watchlist name" />
-                            <x-form.input name="name" required />
-
-                        </div>
-
-                        @error('watchlist')
-                        <span class="text-xs text-red-500">{{ $message }}</span>
-                        @enderror
-
-                        <div class="inline-flex col-span-4 ml-4">
-                            <x-form.button>add</x-form.button>
-                        </div>
-
-                    </div>
-                </form>
+                <x-watchlist.create :club="$club" />
             </x-slot>
 
             <x-slot name="input">
-                <form method="POST" action='/watchlist/{{ $club->id }}/' enctype="multipart/form-data">
-                    @csrf
-                    @method('POST')
-
-                    <div class="lg:grid lg:grid-cols-12">
-                        <div class="col-span-8">
-                            <x-form.label name="add something" />
-                            <x-form.input name="name" required />
-                        </div>
-
-                        <div class="inline-flex col-span-4">
-                            <select name="type_id" id="type_id" class="mt-4 ml-4 mr-4">
-                                @php
-                                $media_types = \App\Models\MediaType::all();
-                                @endphp
-
-                                @foreach ($media_types as $type)
-                                <option value="{{ $type->id }}">{{ ucwords($type->type) }}</option>
-                                @endforeach
-                            </select>
-
-                            <select name="watchlist_id" id="watchlist_id" class="mt-4 ml-4 mr-4">
-                                @php
-                                $watchlists = $club->watchlists;
-                                @endphp
-
-                                @foreach ($watchlists as $watchlist)
-                                <option value="{{ $watchlist->id }}">{{ ucwords($watchlist->name) }}</option>
-                                @endforeach
-                            </select>
-
-                            <x-form.button>add</x-form.button>
-                        </div>
-
-                    </div>
-                </form>
+                <x-watchlist.update :club="$club" :mediaTypes="$mediaTypes" />
             </x-slot>
 
             <x-slot name="list">
-                @foreach ($club->watchlists as $watchlist)
-                <h3 class="underline font-semibold mb-2" id="list">{{ $watchlist->name }}</h3>
-                @foreach ($watchlist->media as $media)
-                <x-watchlist.item class="mt-8" :watchlist="$watchlist" :media="$media" />
-                @endforeach
-                <hr class="mt-6 mb-6">
-                @endforeach
+                <x-watchlist.list :club="$club" />
             </x-slot>
 
         </x-watchlist.main>
