@@ -9,7 +9,7 @@ class Media extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['media_type_id', 'name'];
+    protected $fillable = ['type_id', 'name'];
 
     public function type()
     {
