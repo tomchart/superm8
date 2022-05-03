@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -35,6 +34,13 @@ class DatabaseSeeder extends Seeder
                 $media->save();
             });
         });
+
+        // seed users have seen random media
+        \App\Models\User::all()->each(function ($user) {
+            $media = \App\Models\Media::all()->random(5);
+            $user->watched()->saveMany($media);
+        });
+
 
 
         $watchlists = \App\Models\Watchlist::all();
