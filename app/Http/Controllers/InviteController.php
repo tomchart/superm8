@@ -30,6 +30,7 @@ class InviteController extends Controller
             'invite_code' => Rule::exists('invites', 'code'),
         ]);
         $invite = Invite::where('code', $request->invite_code)->first();
+        // this method does exist, ignore lsp error
         auth()->user()->clubs()->attach($invite->club);
 
         $invite->accepted = true;
