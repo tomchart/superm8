@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Club;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +17,7 @@ return new class extends Migration
         Schema::create('watchlists', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('club_id')->cascadeOnDelete();
+            $table->foreignIdFor(Club::class)->cascadeOnDelete();
             $table->timestamps();
         });
     }
