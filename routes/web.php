@@ -8,6 +8,7 @@ use App\Http\Controllers\InviteController;
 use App\Http\Controllers\AdminClubController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\MediaWatchlistController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WatchlistController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,12 +57,17 @@ Route::post('/redeem', [InviteController::class, 'put'])->middleware(['auth']);
 // Show
 Route::get('/account', [AccountController::class, 'show'])->middleware('auth');
 
+//// Profile
+// Show
+Route::get('/profile/{user:username}', [ProfileController::class, 'show']);
+Route::post('/profile/{auth:user:username}', [ProfileController::class, 'update'])->middleware(['auth', 'media.exists']);
+
 
 //// Watchlist
 // Create new watchlist
 Route::post('/watchlist/{club:id}/create', [WatchlistController::class, 'create'])->middleware(['auth', 'member']);
 // Add media to Watchlist
-Route::post('/watchlist/{club:id}', [WatchlistController::class, 'update'])->middleware(['auth', 'media.exists', 'member']);
+Route::post('/watchlist/{club:id}', [WatchlistController::class, 'update'])->middleware(['auth', 'media.exists', 'media.watchlist', 'member']);
 
 
 //// Media watchlist
