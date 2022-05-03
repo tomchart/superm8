@@ -9,10 +9,9 @@ class ClubController extends Controller
 {
     public function show(Club $club)
     {
-        $mediaTypes = MediaType::all();
         return view('club.show', [
             'club' => $club,
-            'mediaTypes' => $mediaTypes,
+            'mediaTypes' => MediaType::all(),
         ]);
     }
 

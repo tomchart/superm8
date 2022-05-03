@@ -60,6 +60,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'media.exists' => \App\Http\Middleware\DoesMediaExist::class,
+        'media.watchlist' => \App\Http\Middleware\MediaInWatchlist::class,
         'member' => \App\Http\Middleware\MustBeMember::class,
         'owner' => \App\Http\Middleware\MustBeOwner::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,

@@ -8,6 +8,7 @@ use App\Http\Controllers\InviteController;
 use App\Http\Controllers\AdminClubController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\MediaWatchlistController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WatchlistController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,14 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomepageController::class, 'show']);
 Route::get('/home', [HomepageController::class, 'show']);
 
-//// Sessions
-// Register
-Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
-// Login
-Route::get('/login', [SessionController::class, 'create'])->middleware('guest');
-Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
-// Logout
+// Sessions
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [RegisterController::class, 'create']);
+    Route::post('/register', [RegisterController::class, 'store']);
+    Route::get('/login', [SessionController::class, 'create']);
+    Route::post('/login', [SessionController::class, 'store']);
+});
 Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
 
@@ -30,7 +30,7 @@ Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth')
 // View detail page
 Route::get('/club/{club:slug}', [ClubController::class, 'show'])->middleware(['auth', 'member']);
 // Index current clubs
-Route::get('/clubs', [ClubController::class, 'index'])->middleware('auth');
+Route::get('/clubs', [ClubController::class, 'index'])->middleware(['auth']);
 
 
 //// Club administration
@@ -45,23 +45,28 @@ Route::delete('/admin/club/{club:id}', [AdminClubController::class, 'destroy'])-
 
 
 //// Invites
-// Create invite
-Route::post('/invite/{club:slug}', [InviteController::class, 'store'])->middleware(['auth']);
-// View redemption page and redeem
-Route::get('/redeem', [InviteController::class, 'show'])->middleware(['auth']);
-Route::post('/redeem', [InviteController::class, 'put'])->middleware(['auth']);
+Route::middleware('auth')->group(function () {
+    Route::post('/invite/{club:slug}', [InviteController::class, 'store']);
+    Route::get('/redeem', [InviteController::class, 'show']);
+    Route::post('/redeem', [InviteController::class, 'put']);
+});
 
 
 //// Account
 // Show
 Route::get('/account', [AccountController::class, 'show'])->middleware('auth');
 
+//// Profile
+// Show
+Route::get('/profile/{user:username}', [ProfileController::class, 'show']);
+Route::post('/profile/{auth:user:username}', [ProfileController::class, 'update'])->middleware(['auth', 'media.exists']);
+
 
 //// Watchlist
 // Create new watchlist
 Route::post('/watchlist/{club:id}/create', [WatchlistController::class, 'create'])->middleware(['auth', 'member']);
 // Add media to Watchlist
-Route::post('/watchlist/{club:id}', [WatchlistController::class, 'update'])->middleware(['auth', 'media.exists', 'member']);
+Route::post('/watchlist/{club:id}', [WatchlistController::class, 'update'])->middleware(['auth', 'media.exists', 'media.watchlist', 'member']);
 
 
 //// Media watchlist

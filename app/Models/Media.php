@@ -9,7 +9,7 @@ class Media extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['media_type', 'name', 'type_id'];
+    protected $fillable = ['type_id', 'name'];
 
     public function type()
     {
@@ -19,5 +19,10 @@ class Media extends Model
     public function watchlists()
     {
         return $this->belongsToMany(Watchlist::class);
+    }
+
+    public function users_watched()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

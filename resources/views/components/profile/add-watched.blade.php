@@ -1,4 +1,4 @@
-<form method="POST" action='/watchlist/{{ $club->id }}/' enctype="multipart/form-data">
+<form method="POST" action='/profile/{{ auth()->user()->username }}/' enctype="multipart/form-data">
     @csrf
     @method('POST')
 
@@ -14,17 +14,6 @@
                 <option value="{{ $type->id }}">{{ ucwords($type->type) }}</option>
                 @endforeach
             </select>
-
-            <select name="watchlist_id" id="watchlist_id" class="mt-4 ml-4 mr-4">
-                @foreach ($club->watchlists as $watchlist)
-                <option value="{{ $watchlist->id }}">{{ ucwords($watchlist->name) }}</option>
-                @endforeach
-            </select>
-
-            <!-- this doesnt work -->
-            @error ('error')
-            <span class="text-xs text-red-500">{{ $message }}</span>
-            @enderror
 
             <x-form.button>add</x-form.button>
         </div>
