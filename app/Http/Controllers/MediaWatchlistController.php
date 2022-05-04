@@ -12,4 +12,10 @@ class MediaWatchlistController extends Controller
         $watchlist->media()->updateExistingPivot($media->id, ['watched' => request()->inverse_status]);
         return redirect(url()->previous() . '#list');
     }
+
+    public function destroy(Watchlist $watchlist, Media $media)
+    {
+        $watchlist->media()->detach($media->id);
+        return redirect(url()->previous() . '#list');
+    }
 }
