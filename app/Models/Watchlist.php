@@ -20,6 +20,7 @@ class Watchlist extends Model
     public function media()
     {
         return $this->belongsToMany(Media::class)
-            ->withPivot('watched');
+            ->withPivot('watched')
+            ->orderByRaw('watched ASC, name ASC');
     }
 }
