@@ -14,11 +14,4 @@ class ProfileController extends Controller
             'mediaTypes' => MediaType::all(),
         ]);
     }
-
-    public function update()
-    {
-        // this method does exist, ignore the lsp error
-        auth()->user()->watched()->attach(request()->media);
-        return back()->with('success', 'media added');
-    }
 }
