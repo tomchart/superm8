@@ -10,9 +10,15 @@
         <h2 class="font-bold underline text-lg">watched</h2>
         <x-profile.add-watched :mediaTypes="$mediaTypes" />
 
-        @foreach ($user->watched as $media)
-        <li>{{ ucwords($media->name) }}</li>
-        @endforeach
+        <x-table.table label="watched">
+            @foreach ($user->media as $media)
+            <x-table.row>
+                <x-table.text href="/" text="{{ ucwords($media->name) }}" />
+                <x-table.button action="/profile/{{ $user->username }}/{{ $media->id }}" method="DELETE" text="remove" />
+            </x-table.row>
+            @endforeach
+        </x-table.table>
+
     </x-sidebar.home-sidebar>
     @endauth
 </x-layout>
