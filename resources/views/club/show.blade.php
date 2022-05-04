@@ -3,7 +3,7 @@
         <h1 class="font-bold underline text-lg">{{ ucwords($club->name) }}</h1>
         <p class="mt-6 mb-6">Current members:</p>
         @foreach ($club->users as $user)
-        <li>{{ $user->name }}</li>
+        <li>{{ $user->username }}</li>
         @endforeach
 
         <div class="inline-flex">
