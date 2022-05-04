@@ -38,7 +38,7 @@ Route::get('/clubs', [ClubController::class, 'index'])->middleware(['auth']);
 Route::get('/club', [AdminClubController::class, 'create'])->middleware('auth');
 Route::post('/club', [AdminClubController::class, 'store'])->middleware('auth');
 // Edit club
-Route::get('/admin/club/{club:id}/edit', [AdminClubController::class, 'edit'])->middleware(['auth', 'owner']);
+Route::get('/admin/club/{club:id}/edit', [AdminClubController::class, 'show'])->middleware(['auth', 'owner']);
 Route::patch('/admin/club/{club:id}', [AdminClubController::class, 'update'])->middleware(['auth', 'owner']);
 // Delete club
 Route::delete('/admin/club/{club:id}', [AdminClubController::class, 'destroy'])->middleware(['auth', 'owner']);

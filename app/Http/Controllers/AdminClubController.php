@@ -31,12 +31,13 @@ class AdminClubController extends Controller
         }
 
         $club = club::create($attributes);
+        // this method does exist - ignore lsp error
         auth()->user()->clubs()->attach($club);
 
         return redirect('/club/' . $club->slug);
     }
 
-    public function edit(club $club)
+    public function show(club $club)
     {
         return view('club.edit', [
             'club' => $club,
