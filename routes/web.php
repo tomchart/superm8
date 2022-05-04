@@ -74,3 +74,4 @@ Route::post('/watchlist/{club:id}', [WatchlistController::class, 'update'])->mid
 
 // fix middleware again
 Route::patch('/watchlist/{watchlist:id}/{media:id}', [MediaWatchlistController::class, 'update'])->middleware(['auth']);
+Route::delete('/watchlist/{watchlist:id}/{media:id}', [MediaWatchlistController::class, 'destroy'])->middleware(['auth']);
