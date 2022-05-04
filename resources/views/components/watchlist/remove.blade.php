@@ -1,6 +1,6 @@
 <form method="POST" action="/watchlist/{{ $watchlist->id }}/{{ $media->id }}" enctype="multipart/form-data">
     @csrf
-    @method('PATCH')
+    @method('DELETE')
 
     <div class="lg:grid lg:grid-cols-12">
 
@@ -10,17 +10,10 @@
         <span class="text-xs text-red-500">{{ $message }}</span>
         @enderror
 
-        <div class="inline-flex col-span-6 ml-4">
-            @if ($media->pivot->watched)
-            <button type="submit" class="text-sm hover:underline focus:underline text-gray-300">
-                watched
+        <div class="inline-flex col-span-4 ml-4">
+            <button type="submit" class="text-xs hover:underline focus:underline text-red-300">
+                delete
             </button>
-            @else
-            <button type="submit" class="text-sm hover:underline focus:underline">
-                mark as watched
-            </button>
-            @endif
-
         </div>
 
     </div>
