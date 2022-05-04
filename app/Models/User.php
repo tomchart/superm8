@@ -47,7 +47,7 @@ class User extends Authenticatable
         return $this->hasMany(Club::class, 'owner', 'id');
     }
 
-    public function watched()
+    public function media()
     {
         return $this->belongsToMany(Media::class);
     }
