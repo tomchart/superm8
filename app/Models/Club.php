@@ -25,4 +25,9 @@ class Club extends Model
     {
         return $this->hasMany(Watchlist::class);
     }
+
+    public function invites()
+    {
+        return $this->hasMany(Invite::class);
+    }
 }
