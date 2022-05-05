@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Models\Club;
 use App\Models\Invite;
+use App\Models\Media;
 use App\Policies\ClubPolicy;
 use App\Policies\InvitePolicy;
+use App\Policies\MediaUserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -19,6 +21,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Club::class => ClubPolicy::class,
         Invite::class => InvitePolicy::class,
+        Media::class => MediaUserPolicy::class,
     ];
 
     /**
