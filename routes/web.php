@@ -51,8 +51,8 @@ Route::delete('/admin/club/{club:id}/{user:id}', [ClubUserController::class, 'de
 
 //// Invites
 Route::middleware('auth')->group(function () {
-    Route::post('/invite/{club:slug}', [InviteController::class, 'store']);
     Route::get('/redeem', [InviteController::class, 'show']);
+    Route::post('/invite/{club:slug}', [InviteController::class, 'store']);
     Route::post('/redeem', [InviteController::class, 'put']);
 });
 
