@@ -1,4 +1,4 @@
-<form method="POST" action='/profile/{{ auth()->user()->username }}/' enctype="multipart/form-data">
+<form method="POST" action='/profile/{{ auth()->user()->username }}/media' enctype="multipart/form-data">
     @csrf
     @method('POST')
 

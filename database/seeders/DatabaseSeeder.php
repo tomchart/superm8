@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         // seed users have seen random media
         \App\Models\User::all()->each(function ($user) {
             $media = \App\Models\Media::all()->random(5);
-            $user->watched()->saveMany($media);
+            $user->media()->saveMany($media);
         });
 
 

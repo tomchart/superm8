@@ -11,6 +11,7 @@ use App\Http\Controllers\MediaWatchlistController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WatchlistController;
 use App\Http\Controllers\ClubUserController;
+use App\Http\Controllers\MediaUserController;
 use Illuminate\Support\Facades\Route;
 
 //// Homepage
@@ -63,7 +64,10 @@ Route::get('/account', [AccountController::class, 'show'])->middleware('auth');
 //// Profile
 // Show
 Route::get('/profile/{user:username}', [ProfileController::class, 'show']);
-Route::post('/profile/{auth:user:username}', [ProfileController::class, 'update'])->middleware(['auth', 'media.exists']);
+
+//// Media User
+Route::post('/profile/{user:username}/media', [MediaUserController::class, 'store'])->middleware(['auth', 'media.exists']);
+Route::delete('/profile/{user:username}/{media:id}', [MediaUserController::class, 'destroy'])->middleware('auth');
 
 
 //// Watchlist
