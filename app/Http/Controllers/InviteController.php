@@ -12,6 +12,7 @@ class InviteController extends Controller
 {
     public function store(Club $club)
     {
+        $this->authorize('create', [Invite::class, $club]);
         $attributes = array_merge($this->createCode(), [
             'club_id' => $club->id,
         ]);
@@ -21,11 +22,13 @@ class InviteController extends Controller
 
     public function show()
     {
+        $this->authorize('view', Invite::class);
         return view('club.redeem');
     }
 
     public function put(Request $request)
     {
+        $this->authorize('view', Invite::class);
         $request->validate([
             'invite_code' => Rule::exists('invites', 'code'),
         ]);
