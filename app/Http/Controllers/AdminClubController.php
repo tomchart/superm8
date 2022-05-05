@@ -10,11 +10,13 @@ class AdminClubController extends Controller
 {
     public function create()
     {
+        $this->authorize('create');
         return view('club.create');
     }
 
     public function store()
     {
+        $this->authorize('create');
         $slug = $this->createSlug(request('name'));
 
         $attributes = array_merge($this->validateClub(), [
@@ -42,24 +44,25 @@ class AdminClubController extends Controller
         return redirect('/club/' . $club->slug);
     }
 
-    public function show(club $club)
+    public function show(Club $club)
     {
+        $this->authorize('update', $club);
         return view('club.edit', [
             'club' => $club,
         ]);
     }
 
-    public function update(club $club)
+    public function update(Club $club)
     {
+        $this->authorize('update', $club);
         $attributes = $this->validateclub($club);
-
         $club->update($attributes);
-
         return redirect('/club/' . $club->slug);
     }
 
     public function destroy(club $club)
     {
+        $this->authorize('delete', [auth()->user(), $club]);
         $club->delete();
         return back()->with('success', 'Club deleted successfully');
     }

@@ -13,7 +13,9 @@ class MediaUserController extends Controller
 
     public function store(User $user)
     {
-        $user->media()->attach(request()->media);
+        $media = request()->media;
+        $this->authorize('create', [Media::class, $media]);
+        $user->media()->attach($media);
         return back()->with('success', 'media added');
     }
 
