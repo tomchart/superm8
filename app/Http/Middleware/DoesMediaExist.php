@@ -36,6 +36,7 @@ class DoesMediaExist
         return request()->validate([
             'type_id' => ['required', 'integer'],
             'name' => ['required', 'max:255'],
+            'rating_ebert' => [],
         ]);
     }
 }
