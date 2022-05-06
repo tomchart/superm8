@@ -7,7 +7,7 @@ use App\Models\User;
 
 class ClubUserController extends Controller
 {
-    public function destroy(User $user, Club $club)
+    public function destroy(Club $club, User $user)
     {
         $club->users()->detach($user->id);
         return back()->with('success', $user->username . ' removed from ' . $club->name);
