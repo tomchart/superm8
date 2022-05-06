@@ -1,10 +1,11 @@
 <div class="grid grid-cols-3">
-    <div class="col-span-1">
+    <div class="col-span-1 inline-flex">
         @if ($media->pivot->watched)
         <p class="line-through">{{ $media->name }}</p>
         @else
         <p>{{ $media->name }}</p>
         @endif
+        <x-rating.rating :media="$media" />
     </div>
 
     <div class="col-span-1">
