@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Club;
 use App\Models\MediaType;
+use App\Models\Rating;
 
 class ClubController extends Controller
 {
@@ -12,6 +13,7 @@ class ClubController extends Controller
         return view('club.show', [
             'club' => $club,
             'mediaTypes' => MediaType::all(),
+            'ratings' => Rating::all(),
         ]);
     }
 
