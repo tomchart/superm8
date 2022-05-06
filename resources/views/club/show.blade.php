@@ -30,7 +30,7 @@
             </x-slot>
 
             <x-slot name="input">
-                <x-watchlist.update :club="$club" :mediaTypes="$mediaTypes" />
+                <x-watchlist.update :club="$club" :mediaTypes="$mediaTypes" :ratings="$ratings" />
             </x-slot>
 
             <x-slot name="list">
