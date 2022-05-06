@@ -26,7 +26,10 @@ class DatabaseSeeder extends Seeder
         });
 
         // create 3 media types
-        \App\Models\MediaType::factory(3)->create()->each(function ($media_type) {
+        $this->call([
+            MediaTypeSeeder::class,
+        ]);
+        \App\Models\MediaType::all()->each(function ($media_type) {
             // seed the relation with 15 media rows
             $media = \App\Models\Media::factory(15)->make();
             $media->each(function ($media) use ($media_type) {
@@ -41,12 +44,14 @@ class DatabaseSeeder extends Seeder
             $user->media()->saveMany($media);
         });
 
-
-
         $watchlists = \App\Models\Watchlist::all();
         $watchlists->each(function ($watchlist) {
             $media = \App\Models\Media::inRandomOrder()->limit(7)->get();
             $watchlist->media()->saveMany($media);
         });
+
+        $this->call([
+            RatingSeeder::class,
+        ]);
     }
 }
