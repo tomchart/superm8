@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\MediaType;
-use App\Models\Rating;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('media', function (Blueprint $table) {
+        Schema::create('rating_ebert', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(MediaType::class, 'type_id');
-            $table->foreignIdFor(Rating::class, 'rating_ebert')->nullable();
-            $table->string('name');
-            $table->timestamps();
+            $table->float('rating');
         });
     }
 
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('media');
+        Schema::dropIfExists('rating_ebert');
     }
 };

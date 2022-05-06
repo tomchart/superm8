@@ -8,12 +8,12 @@
         <hr class="mt-12 mb-6" />
 
         <h2 class="font-bold underline text-lg">watched</h2>
-        <x-profile.add-watched :mediaTypes="$mediaTypes" />
+        <x-profile.add-watched :mediaTypes="$mediaTypes" :ratings="$ratings" />
 
         <x-table.table label="watched">
             @foreach ($user->media as $media)
             <x-table.row>
-                <x-table.text href="/" text="{{ ucwords($media->name) }}" />
+                <x-table.media :media="$media" :ratings="$ratings" />
                 <x-table.button action="/profile/{{ $user->username }}/{{ $media->id }}" method="DELETE" text="remove" />
             </x-table.row>
             @endforeach
