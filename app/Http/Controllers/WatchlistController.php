@@ -21,7 +21,7 @@ class WatchlistController extends Controller
                 'watchlist' => 'Your watchlist name could not be verified',
             ]);
         }
-        $watchlist = Watchlist::create($attributes);
+        Watchlist::create($attributes);
         return back()->with('success', 'Watchlist created for club.');
     }
 
