@@ -7,9 +7,11 @@
         <h1 class="mb-6 text-lg">watched</h1>
         <div class="lg:grid lg:grid-cols-5">
             @foreach ($user->media as $media)
-            <div class="col-span-1 mr-4 mb-4 transform transition duration-500 hover:scale-105 flex justify-center items-center">
-                <a href="/media/{{ $media->id }}"><img width="85%" height="85%" src="{{ $media->omdb->poster }}" /></a>
+
+            <div class="col-span-1 mr-4 mb-4 transform transition duration-500 hover:scale-105">
+                <a href="/media/{{ $media->id }}"><img class="relative rounded" width="85%" height="85%" src="{{ $media->omdb->poster }}" /></a>
             </div>
+
             @endforeach
         </div>
     </x-sidebar.home-sidebar>
