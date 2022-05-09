@@ -6,6 +6,8 @@ class HomepageController extends Controller
 {
     public function show()
     {
-        return view('homepage');
+        return view('homepage', [
+            'user' => auth()->user(),
+        ]);
     }
 }
