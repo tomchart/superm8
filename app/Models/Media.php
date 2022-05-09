@@ -30,4 +30,9 @@ class Media extends Model
     {
         return $this->belongsTo(Rating::class, 'rating_ebert');
     }
+
+    public function omdb()
+    {
+        return $this->hasOne(OmdbInfo::class, 'media_id');
+    }
 }
