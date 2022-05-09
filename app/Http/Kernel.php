@@ -58,6 +58,7 @@ class Kernel extends HttpKernel
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'fetch.omdb' => \App\Http\Middleware\FetchMissingOmdbInfo::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'media.exists' => \App\Http\Middleware\DoesMediaExist::class,
         'media.watchlist' => \App\Http\Middleware\MediaInWatchlist::class,

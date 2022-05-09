@@ -1,5 +1,5 @@
 <p>
-<div class="flex flex-row px-2 py-1.5">
+<div class="{{ $class }}">
 
     @if ($media->rating)
     @while ($media->rating->rating > 0)

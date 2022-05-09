@@ -1,11 +1,11 @@
 <div class="grid grid-cols-3">
     <div class="col-span-1 inline-flex">
         @if ($media->pivot->watched)
-        <p class="line-through">{{ $media->name }}</p>
+        <a href="/media/{{ $media->id }}" class="line-through">{{ $media->name }}</a>
         @else
-        <p>{{ $media->name }}</p>
+        <a href="/media/{{ $media->id }}" class="hover:underline">{{ $media->name }}</a>
         @endif
-        <x-rating.rating :media="$media" />
+        <x-rating.rating :media="$media" class="flex flex-row px-2 py-1.5" />
     </div>
 
     <div class="col-span-1">

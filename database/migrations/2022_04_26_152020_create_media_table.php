@@ -2,6 +2,7 @@
 
 use App\Models\MediaType;
 use App\Models\Rating;
+use App\Models\OmdbInfo;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,6 +20,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(MediaType::class, 'type_id');
             $table->foreignIdFor(Rating::class, 'rating_ebert')->nullable();
+            $table->foreignIdFor(OmdbInfo::class, 'omdb_info')->nullable();
             $table->string('name');
             $table->timestamps();
         });
