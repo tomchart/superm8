@@ -5,7 +5,7 @@
         @else
         <p>{{ $media->name }}</p>
         @endif
-        <x-rating.rating :media="$media" />
+        <x-rating.rating :media="$media" class="flex flex-row px-2 py-1.5" />
     </div>
 
     <div class="col-span-1">
