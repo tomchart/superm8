@@ -8,6 +8,7 @@ class HomepageController extends Controller
     {
         return view('homepage', [
             'user' => auth()->user(),
+            'clubs' => auth()->user()->clubs,
         ]);
     }
 }
