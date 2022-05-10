@@ -19,6 +19,10 @@
             @endforeach
         </x-table.table>
 
+        <hr class="mb-6 mt-6" />
+
+        <x-watched :user="$user" />
+
     </x-sidebar.home-sidebar>
     @endauth
 </x-layout>
