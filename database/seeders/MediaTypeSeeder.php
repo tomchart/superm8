@@ -16,13 +16,10 @@ class MediaTypeSeeder extends Seeder
     {
         DB::table('media_types')->insert([
             [
-                'type' => 'film',
+                'type' => 'movie',
             ],
             [
-                'type' => 'documentary',
-            ],
-            [
-                'type' => 'tv',
+                'type' => 'series',
             ],
         ]);
     }
