@@ -7,11 +7,6 @@
 
         <hr class="mt-12 mb-6" />
 
-        <div id="app">
-            <search />
-        </div>
-        <script src="{{ mix('js/app.js') }}"></script>
-
         <h2 class="font-bold underline text-lg">watched</h2>
         <x-profile.add-watched :mediaTypes="$mediaTypes" :ratings="$ratings" />
 
