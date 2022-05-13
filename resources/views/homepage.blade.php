@@ -1,6 +1,32 @@
 <x-layout>
+    @auth
     <x-sidebar.home-sidebar>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et enim tincidunt, scelerisque quam eu, posuere diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tristique finibus efficitur. Vivamus egestas lorem purus, at vestibulum tortor interdum eget. Donec nec sodales sapien, eu semper risus. Mauris rutrum dapibus justo, vestibulum elementum metus ullamcorper id. Mauris placerat semper velit ac mattis. In tortor leo, consectetur ut velit ut, vulputate egestas ipsum. Fusce gravida lectus quis lectus posuere egestas eget ac elit. Ut sit amet dolor rutrum, condimentum justo non, interdum nunc.</p>
-        <p class="mt-8">Integer interdum ante nulla, sollicitudin consequat nulla lacinia at. Vivamus vestibulum mauris odio. Aenean hendrerit ultricies nibh. Praesent pretium consectetur purus, eu volutpat erat tincidunt ac. Praesent tellus ipsum, hendrerit at vulputate vitae, ultricies quis massa. Sed varius dignissim ornare. Integer ultricies, justo a bibendum maximus, elit augue sagittis nunc, a elementum ipsum ex ut elit. Aliquam dapibus, leo eget tincidunt dignissim, massa massa lobortis tortor, in pharetra turpis dui non arcu. Nam diam tortor, volutpat ut ullamcorper ac, suscipit vel augue. Ut orci purus, dictum vel leo eget, feugiat maximus dolor.</p>
+        <h1 class="mb-6 text-xl">Clubs & Watchlists</h1>
+        @foreach ($clubs as $club)
+        <a href="/club/{{ $club->slug }}" class="mb-6 text-xl flex hover:underline">{{ $club->name }}</a>
+        @foreach ($club->watchlists as $watchlist)
+        @if ($watchlist->media->count() > 0)
+        <a href="/club/{{ $club->slug }}#list" class="mb-6 text-xl flex hover:underline">{{ $watchlist->name }}</a>
+        <div class="lg:grid lg:grid-cols-5">
+            @foreach ($watchlist->media as $media)
+            <div class="col-span-1 mr-4 mb-6 transform transition duration-500 hover:scale-105">
+                <a href="/media/{{ $media->id }}"><img class="relative rounded" width="85%" height="85%" src="{{ $media->omdb->poster }}" /></a>
+            </div>
+            @endforeach
+        </div>
+        @endif
+        @endforeach
+        @endforeach
+
+
+        <hr class="mb-6" />
+
+        <x-watched :user="$user" />
     </x-sidebar.home-sidebar>
+    @else
+    <div class="text-center">
+        <p class="text-lg mt-20 mb-6">Hi there.</p>
+        <p>Please <a class="underline hover:italic" href="/login">log in</a> to view content.</p>
+    </div>
+    @endauth
 </x-layout>
