@@ -18,7 +18,7 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(MediaType::class, 'type_id');
+            $table->foreignIdFor(MediaType::class, 'type_id')->nullable();
             $table->foreignIdFor(Rating::class, 'rating_ebert')->nullable();
             $table->foreignIdFor(OmdbInfo::class, 'omdb_info')->nullable();
             $table->string('name');
