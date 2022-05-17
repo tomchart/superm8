@@ -5,7 +5,7 @@
         <p class="mb-4 italic text-sm text-gray-500">{{ '@' . $user->username }}</p>
         <p class="text-sm">{{ $user->description }}</p>
 
-        <hr class="mt-12 mb-6" />
+        <div class="mt-12 mb-6 border-t border-gray-600"></div>
 
         <h2 class="font-bold underline text-lg">watched</h2>
         <x-profile.add-watched :mediaTypes="$mediaTypes" :ratings="$ratings" />
@@ -19,9 +19,8 @@
             @endforeach
         </x-table.table>
 
-        <hr class="mb-6 mt-6" />
+        <div class="mt-6 mb-6 border-t border-gray-600"></div>
 
-        <x-watched :user="$user" />
 
     </x-sidebar.home-sidebar>
     @endauth
