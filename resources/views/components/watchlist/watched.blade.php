@@ -12,7 +12,7 @@
 
         <div class="inline-flex col-span-6 ml-4">
             @if ($media->pivot->watched)
-            <button type="submit" class="text-sm hover:underline focus:underline text-gray-300">
+            <button type="submit" class="text-sm hover:underline focus:underline text-gray-400">
                 watched
             </button>
             @else
