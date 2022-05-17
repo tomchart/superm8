@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Media extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
-    protected $fillable = ['type_id', 'name', 'rating_ebert'];
+    protected $table = 'media';
+
+    protected $guarded = [];
 
     public function type()
     {
@@ -29,10 +32,5 @@ class Media extends Model
     public function rating()
     {
         return $this->belongsTo(Rating::class, 'rating_ebert');
-    }
-
-    public function omdb()
-    {
-        return $this->hasOne(OmdbInfo::class, 'media_id');
     }
 }
