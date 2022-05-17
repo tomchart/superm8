@@ -17,26 +17,17 @@ class DoesMediaExist
      */
     public function handle(Request $request, Closure $next)
     {
-        $media_input_name = strtolower(request()->name);
-        $media_input_type = request()->type_id;
-        $media = Media::where('name', '=', $media_input_name)->where('type_id', '=', $media_input_type)->first();
+        // search for existing Media for Title and Type provided by user
+        $title = strtolower(request()->name);
+        $type = request()->type_id;
+        $media = Media::where('Title', '=', $title)->where('Type', '=', $type)->first();
 
+        // merge if not null else do nothing
         if ($media != null) {
             $request->merge(['media' => $media]);
             return $next($request);
         } else {
-            $attributes = $this->validateMedia();
-            $media = Media::create($attributes);
-            $request->merge(['media' => $media]);
             return $next($request);
         }
-    }
-    protected function validateMedia()
-    {
-        return request()->validate([
-            'type_id' => ['required', 'integer'],
-            'name' => ['required', 'max:255'],
-            'rating_ebert' => [],
-        ]);
     }
 }
