@@ -22,7 +22,7 @@
 
         </div>
 
-        <hr class="mt-6">
+        <div class="mt-6 border-t border-gray-600"></div>
 
         <x-watchlist.main>
             <x-slot name="new">
