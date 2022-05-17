@@ -33,13 +33,13 @@ class FetchMissingMediaInfo
             // validate search data
             $attributes = $this->validateSearch();
 
-            $mediaInfo = $this->mediaAPI->searchTitle($attributes['name']);
+            $media = $this->mediaAPI->searchTitle($attributes['name']);
 
             // return rating from table
-            $mediaInfo->rating()->associate(Rating::where('id', '=', $attributes['rating_ebert'])->first());
-            $mediaInfo->save();
-            // merge newly created mediaInfo model to request array
-            $request->merge(['mediaInfo' => $mediaInfo]);
+            $media->rating()->associate(Rating::where('id', '=', $attributes['rating_ebert'])->first());
+            $media->save();
+            // merge newly created media model to request array
+            $request->merge(['media' => $media]);
             return $next($request);
         } else {
             // exists, do nothing?

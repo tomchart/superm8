@@ -21,6 +21,8 @@
 
         <div class="mt-6 mb-6 border-t border-gray-600"></div>
 
+        <x-watched :user="$user" />
+
 
     </x-sidebar.home-sidebar>
     @endauth

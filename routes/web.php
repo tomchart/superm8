@@ -78,7 +78,7 @@ Route::get('/media/{media:id}', [MediaController::class, 'show'])->middleware(['
 // Create new watchlist
 Route::post('/watchlist/{club:id}/create', [WatchlistController::class, 'create'])->middleware(['auth', 'member']);
 // Add media to Watchlist
-Route::post('/watchlist/{club:id}', [WatchlistController::class, 'update'])->middleware(['auth', 'media.exists', 'media.watchlist', 'member']);
+Route::post('/watchlist/{club:id}', [WatchlistController::class, 'update'])->middleware(['auth', 'media.exists', 'media.watchlist', 'fetch.media', 'member']);
 
 
 //// Media watchlist
