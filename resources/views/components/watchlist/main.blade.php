@@ -1,9 +1,17 @@
 <div class="mt-10">
-    <h2 class="font-bold underline text-lg">create new watchlist</h2>
-    {{ $new }}
+    <div x-data="{ expanded: false }">
+        <h2 @click="expanded = ! expanded" class="font-bold underline text-lg hover:italic">create new watchlist</h2>
+        <div x-show="expanded" x-collapse>
+            {{ $new }}
+        </div>
+    </div>
 
-    <h2 class="font-bold underline text-lg">add to list</h2>
-    {{ $input }}
+    <div x-data="{ expanded: false }">
+        <h2 @click="expanded = ! expanded" class="font-bold underline text-lg hover:italic">add to list</h2>
+        <div x-show="expanded" x-collapse>
+            {{ $input }}
+        </div>
+    </div>
 
     <div class="mt-6 border-t border-gray-600"></div>
 
