@@ -67,11 +67,11 @@ Route::get('/account', [AccountController::class, 'show'])->middleware('auth');
 Route::get('/profile/{user:username}', [ProfileController::class, 'show']);
 
 //// Media User
-Route::post('/profile/{user:username}/media', [MediaUserController::class, 'store'])->middleware(['auth', 'media.exists', 'fetch.omdb']);
+Route::post('/profile/{user:username}/media', [MediaUserController::class, 'store'])->middleware(['auth', 'media.exists', 'fetch.media']);
 Route::delete('/profile/{user:username}/{media:id}', [MediaUserController::class, 'destroy'])->middleware('auth');
 
 //// Media
-Route::get('/media/{media:id}', [MediaController::class, 'show'])->middleware(['auth', 'fetch.omdb']);
+Route::get('/media/{media:id}', [MediaController::class, 'show'])->middleware(['auth', 'fetch.media']);
 
 
 //// Watchlist
