@@ -22,4 +22,10 @@ class Watchlist extends Model
             ->withPivot('watched')
             ->orderByRaw('watched ASC, Title ASC');
     }
+
+    public function unwatched()
+    {
+        return $this->belongsToMany(Media::class)
+            ->wherePivot('watched', '=', '0');
+    }
 }
