@@ -3,5 +3,5 @@
 @foreach ($watchlist->media as $media)
 <x-watchlist.item class="mt-8" :watchlist="$watchlist" :media="$media" />
 @endforeach
-<hr class="mt-6 mb-6">
+<div class="mt-6 mb-6 border-t border-gray-600"></div>
 @endforeach

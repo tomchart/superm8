@@ -9,21 +9,21 @@
         </div>
 
         <div class="inline-flex col-span-6">
-            <select name="type_id" id="type_id" class="mt-4 ml-4 mr-4">
+            <select name="type_id" id="type_id" class="mt-4 ml-4 mr-4 bg-gray-900">
                 <option value="" disabled selected hidden>type</option>
                 @foreach ($mediaTypes as $type)
                 <option value="{{ $type->id }}">{{ ucwords($type->type) }}</option>
                 @endforeach
             </select>
 
-            <select name="watchlist_id" id="watchlist_id" class="mt-4 ml-4 mr-4">
+            <select name="watchlist_id" id="watchlist_id" class="mt-4 ml-4 mr-4 bg-gray-900">
                 <option value="" disabled selected hidden>watchlist</option>
                 @foreach ($club->watchlists as $watchlist)
                 <option value="{{ $watchlist->id }}">{{ ucwords($watchlist->name) }}</option>
                 @endforeach
             </select>
 
-            <select name="rating_ebert" id="rating_ebert" class="mt-4 ml-4 mr-4">
+            <select name="rating_ebert" id="rating_ebert" class="mt-4 ml-4 mr-4 bg-gray-900">
                 <option value="" disabled selected hidden>rating</option>
                 <option value="">unrated</option>
                 @foreach ($ratings as $rating)
