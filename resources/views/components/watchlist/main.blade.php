@@ -1,20 +1,14 @@
-<div class="mt-10">
-    <div x-data="{ expanded: false }">
-        <h2 @click="expanded = ! expanded" class="font-bold underline text-lg hover:italic">create new watchlist</h2>
-        <div x-show="expanded" x-collapse>
+<div class="mt-6">
+    <div x-data="{ expanded1: false, expanded2: false }">
+        <button @click="expanded1 = ! expanded1" type="button" class="bg-gray-700 text-white rounded-full py-2 px-8 hover:bg-gray-800 mt-6 mb-6 ml-4">create watchlist</button>
+        <button @click="expanded2 = ! expanded2" type="button" class="bg-gray-700 text-white rounded-full py-2 px-8 hover:bg-gray-800 mt-6 mb-6 ml-4">add to list</button>
+
+        <div x-show="expanded1" x-collapse>
             {{ $new }}
         </div>
-    </div>
 
-    <div x-data="{ expanded: false }">
-        <h2 @click="expanded = ! expanded" class="font-bold underline text-lg hover:italic">add to list</h2>
-        <div x-show="expanded" x-collapse>
+        <div x-show="expanded2" x-collapse>
             {{ $input }}
         </div>
     </div>
-
-    <div class="mt-6 border-t border-gray-600"></div>
-
-    <h2 class="font-bold underline text-lg mt-6 mb-6">watch lists</h2>
-    {{ $list }}
 </div>
