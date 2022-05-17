@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Media;
 
 class Watchlist extends Model
 {
@@ -21,6 +20,6 @@ class Watchlist extends Model
     {
         return $this->belongsToMany(Media::class)
             ->withPivot('watched')
-            ->orderByRaw('watched ASC, name ASC');
+            ->orderByRaw('watched ASC, Title ASC');
     }
 }
