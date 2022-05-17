@@ -5,34 +5,35 @@
         <div class="lg:grid lg:grid-cols-12">
 
             <div class="col-span-8 mr-8">
-                <p class="text-xl mb-2">{{ $media->omdb->Title }}</p>
+                <p class="text-xl mb-2">{{ $media->Title }}</p>
                 @if ($media->rating_ebert)
                 <x-rating.rating :media="$media" class="flex flex-row mb-2" />
                 @endif
-                <p class="mb-4 text-sm text-gray-500">{{ $media->omdb->Year . ' - ' . $media->omdb->Rated . ' - ' . $media->omdb->Runtime  }}</p>
+                <p class="mb-4 text-sm text-gray-400">{{ $media->Year . ' - ' . $media->Rated . ' - ' . $media->Runtime  }}</p>
 
-                <hr class="mt-4 mb-4" />
+                <div class="mt-4 mb-4 border-t border-gray-600"></div>
 
-                <p class="text-sm italic mb-6">{{ $media->omdb->Plot }}</p>
-                @if ($media->omdb->Director != "N/A")
-                <p class="text-sm mb-2">Director: {{ $media->omdb->Director }}</p>
+
+                <p class="text-sm italic mb-6">{{ $media->Plot }}</p>
+                @if ($media->Director != "N/A")
+                <p class="text-sm mb-2">Director: {{ $media->Director }}</p>
                 @endif
-                <p class="text-sm mb-2">Writers: {{ $media->omdb->Writer }}</p>
-                <p class="text-sm mb-2">Stars: {{ $media->omdb->Actors }}</p>
+                <p class="text-sm mb-2">Writers: {{ $media->Writer }}</p>
+                <p class="text-sm mb-2">Stars: {{ $media->Actors }}</p>
 
-                <hr class="mt-6 mb-6" />
+                <div class="mt-6 mb-6 border-t border-gray-600"></div>
 
-                <x-ratings :omdb="$media->omdb" />
+                <x-ratings :media="$media" />
 
             </div>
 
             <div class="col-span-4 ml-6">
-                <img width="85%" height="85%" src="{{ $media->omdb->Poster }}" />
+                <img width="85%" height="85%" src="{{ $media->Poster }}" />
             </div>
 
         </div>
 
-        <hr class="mt-12 mb-6" />
+        <div class="mt-12 mb-6 border-t border-gray-600"></div>
 
     </x-sidebar.home-sidebar>
     @endauth
