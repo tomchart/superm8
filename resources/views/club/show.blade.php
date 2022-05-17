@@ -22,8 +22,6 @@
 
         </div>
 
-        <div class="mt-6 border-t border-gray-600"></div>
-
         <x-watchlist.main>
             <x-slot name="new">
                 <x-watchlist.create :club="$club" />
@@ -32,12 +30,10 @@
             <x-slot name="input">
                 <x-watchlist.update :club="$club" :mediaTypes="$mediaTypes" :ratings="$ratings" />
             </x-slot>
-
-            <x-slot name="list">
-                <x-watchlist.list :club="$club" />
-            </x-slot>
-
         </x-watchlist.main>
+
+        <div class="mt-6 mb-6 border-t border-gray-600"></div>
+        <x-watchlist.list :club="$club" />
 
     </x-sidebar.home-sidebar>
 </x-layout>
