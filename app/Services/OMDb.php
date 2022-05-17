@@ -3,10 +3,10 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
-use App\Models\OmdbInfo;
+use App\Models\Media;
 
 
-class OMDb
+class OMDb implements MediaApi
 {
     public function searchTitle(String $title)
     {
@@ -16,19 +16,19 @@ class OMDb
             't' => $title,
         ]);
 
-        // create OmdbInfo from $response
-        $OmdbInfo = new OmdbInfo($this->parse($response->object()));
-        return $OmdbInfo;
+        // create Media from $response
+        $media = new Media($this->parse($response->object()));
+        return $media;
     }
     protected function parse($response)
     {
-        $omdbArray = [];
+        $mediaArray = [];
 
         // store rotten tomatoes rating if exists
         if ($response->Ratings) {
             foreach ($response->Ratings as $rating) {
                 if ($rating->Source == 'Rotten Tomatoes') {
-                    $omdbArray["rottenTomatoesRating"] = $rating->Value;
+                    $mediaArray["rottenTomatoesRating"] = $rating->Value;
                 };
             };
         }
@@ -36,9 +36,9 @@ class OMDb
         // loop over response, dropping Ratings, and store in array
         foreach ($response as $key => $value) {
             if ($key != "Ratings") {
-                $omdbArray[$key] = $value;
+                $mediaArray[$key] = $value;
             };
         }
-        return $omdbArray;
+        return $mediaArray;
     }
 }

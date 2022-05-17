@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Media;
+use App\Models\Rating;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,9 +14,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('omdb_info', function (Blueprint $table) {
+        Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Media::class, 'media_id');
+            $table->foreignIdFor(Rating::class, 'rating_ebert')->nullable();
             $table->string("Title");
             $table->string("Year");
             $table->string("Rated");
@@ -55,6 +55,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('omdb_info');
+        Schema::dropIfExists('media');
     }
 };

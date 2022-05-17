@@ -14,7 +14,7 @@
     }
 </style>
 
-<body style="font-family: Open Sans, sans-serif">
+<body style="font-family: Open Sans, sans-serif" class="bg-gray-800 text-white">
     <section class="px-6 py-6">
         <nav class="md:flex md:justify-between md:items-center">
             <div>
