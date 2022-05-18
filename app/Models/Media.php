@@ -33,4 +33,9 @@ class Media extends Model
     {
         return $this->belongsTo(Rating::class, 'rating_ebert');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(MediaComment::class);
+    }
 }
