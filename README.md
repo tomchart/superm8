@@ -6,7 +6,7 @@ This is a personal development project that I'm writing to improve my knowledge 
 
 ### Todo
 
--   comments on media detail page
+-   ~comments on media detail page~
 -   discussion board on club page
 -   user descriptions/bios and avatars
 -   user ratings (average and display these per club)
