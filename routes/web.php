@@ -11,6 +11,7 @@ use App\Http\Controllers\MediaWatchlistController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WatchlistController;
 use App\Http\Controllers\ClubUserController;
+use App\Http\Controllers\MediaCommentController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MediaUserController;
 use Illuminate\Support\Facades\Route;
@@ -83,7 +84,10 @@ Route::post('/watchlist/{club:id}', [WatchlistController::class, 'update'])->mid
 
 //// Media watchlist
 // Mark as watched
-
 // fix middleware again
 Route::patch('/watchlist/{watchlist:id}/{media:id}', [MediaWatchlistController::class, 'update'])->middleware(['auth']);
 Route::delete('/watchlist/{watchlist:id}/{media:id}', [MediaWatchlistController::class, 'destroy'])->middleware(['auth']);
+
+
+//// Media Comment
+Route::post('/media/{media:id}/comment', [MediaCommentController::class, 'store'])->middleware(['auth']);
