@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Club;
 use App\Models\Watchlist;
 use Illuminate\Validation\ValidationException;
+use App\Jobs\UpdateWatchedWatchlist;
 
 class WatchlistController extends Controller
 {
@@ -25,9 +26,11 @@ class WatchlistController extends Controller
         return back()->with('success', 'Watchlist created for club.');
     }
 
-    public function update(Watchlist $watchlist)
+    public function update(Club $club)
     {
+        $watchlist = Watchlist::where('id', '=', request('watchlist_id'))->first();
         $watchlist->media()->attach(request('media'), ['watchlist_id' => request('watchlist_id')]);
+        UpdateWatchedWatchlist::dispatch(request('media'), $club, $watchlist);
         return redirect(url()->previous() . '#list');
     }
 }
