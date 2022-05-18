@@ -33,7 +33,19 @@
 
         </div>
 
-        <div class="mt-12 mb-6 border-t border-gray-600"></div>
+        <div class="mt-6 mb-6 border-t border-gray-600"></div>
+
+        <div class="lg:grid lg:grid-cols-12">
+            <section class="col-span-8" id="comments">
+                <x-comment.add :media="$media" />
+            </section>
+
+            <section class="col-span-8 mt-10 space-y-6">
+                @foreach ($comments as $comment)
+                <x-comment.comment :comment="$comment" />
+                @endforeach
+            </section>
+        </div>
 
     </x-sidebar.home-sidebar>
     @endauth

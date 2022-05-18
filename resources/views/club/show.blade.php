@@ -8,7 +8,7 @@
 
         <div class="inline-flex">
             <!-- make this only for club owner with a Gate -->
-            <a href="/admin/club/{{ $club->id }}/edit" class="mt-12 py-2 px-4 mr-8 hover:underline">edit club</a>
+            <a href="/admin/club/{{ $club->id }}/edit" class="mt-8 py-2 px-4 mr-8 hover:underline">edit club</a>
 
             <form method="POST" action="/invite/{{ $club->slug }}" class="">
                 @csrf

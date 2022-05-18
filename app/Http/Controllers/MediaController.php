@@ -12,6 +12,7 @@ class MediaController extends Controller
     {
         return view('media.show', [
             'media' => $media,
+            'comments' => $media->comments->sortDesc(),
         ]);
     }
 
