@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProfileRemoveWatchedUpdateWatchlist;
+use App\Jobs\UpdateWatchedProfile;
 use App\Models\User;
 use App\Models\Media;
 
@@ -15,12 +17,14 @@ class MediaUserController extends Controller
     {
         $match = $this->findIfExists(request()->name);
         $user->media()->attach($match);
+        UpdateWatchedProfile::dispatch($user, $match);
         return back()->with('success', 'media added');
     }
 
     public function destroy(User $user, Media $media)
     {
         $user->media()->detach($media);
+        ProfileRemoveWatchedUpdateWatchlist::dispatch($user, $media);
         return back()->with('success', 'media removed');
     }
 
