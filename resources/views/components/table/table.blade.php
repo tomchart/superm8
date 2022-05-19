@@ -5,7 +5,7 @@
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-600 sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
-                        <tbody class="bg-gray-800 divide-y divide-gray-600">
+                        <tbody class="bg-base-100 divide-y divide-gray-600">
                             {{ $slot }}
                         </tbody>
                     </table>

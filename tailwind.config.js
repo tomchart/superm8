@@ -1,4 +1,5 @@
 module.exports = {
+    darkMode: "class",
     purge: [],
     purge: [
         "./resources/**/*.blade.php",
@@ -9,5 +10,5 @@ module.exports = {
     theme: {
         extend: {},
     },
-    plugins: ["blur"],
+    plugins: ["blur", require("daisyui")],
 };

@@ -1,5 +1,5 @@
 @props (['name'])
 <x-form.field>
-    <input class="border border-gray-600 bg-gray-800 p-2 w-full rounded mb-6" name="{{ $name }}" id="{{ $name }}" {{ $attributes(['value' => old($name)]) }}>
+    <input {{ $attributes(['class' => 'input input-secondary bg-secondary w-full mb-4 placeholder-base-100 text-black placeholder-black']) }} name="{{ $name }}" id="{{ $name }}" {{ $attributes(['value' => old($name)]) }} placeholder="{{ $attributes['placeholder'] }}">
     <x-form.error name="{{ $name }}" />
 </x-form.field>
