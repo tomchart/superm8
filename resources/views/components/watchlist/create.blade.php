@@ -4,9 +4,7 @@
 
     <div class="lg:grid lg:grid-cols-12">
         <div class="col-span-8">
-            <x-form.label name="watchlist name" />
-            <x-form.input name="name" required />
-
+            <x-form.input name="name" placeholder="enter name..." class="mt-2" required />
         </div>
 
         @error ('watchlist')
@@ -14,7 +12,7 @@
         @enderror
 
         <div class="inline-flex col-span-4 ml-4">
-            <x-form.button>add</x-form.button>
+            <x-form.button class="mt-2">create</x-form.button>
         </div>
 
     </div>
