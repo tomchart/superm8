@@ -40,9 +40,10 @@ class AddWatchedFromWatchlist implements ShouldQueue
     {
         if ($this->status == '1') {
             foreach ($this->club->users as $user) {
-                $user->media()->attach($this->media);
+                if (!$user->media->contains($this->media->id)) {
+                    $user->media()->attach($this->media);
+                }
             }
         }
-
     }
 }
