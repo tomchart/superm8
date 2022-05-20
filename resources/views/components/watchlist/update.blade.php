@@ -8,7 +8,7 @@
         </div>
 
         <div class="inline-flex col-span-7">
-            <select name="type_id" id="type_id" class="select bg-secondary mt-8 mr-2 ml-4">
+            <select name="type_id" id="type_id" class="select bg-secondary mt-8 mr-2 ml-6">
                 <option disabled selected hidden>media type</option>
                 @foreach ($mediaTypes as $type)
                 <option value="{{ $type->id }}">{{ ucwords($type->type) }}</option>
@@ -35,7 +35,7 @@
             <span class="text-xs text-red-500">{{ $message }}</span>
             @enderror
 
-            <x-form.button class="mt-2">add</x-form.button>
+            <x-form.button class="mt-2 ml-4">add</x-form.button>
         </div>
 
     </div>
