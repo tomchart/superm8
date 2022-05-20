@@ -33,4 +33,10 @@ class WatchlistController extends Controller
         UpdateWatchedWatchlist::dispatch(request('media'), $club, $watchlist);
         return redirect(url()->previous() . '#list');
     }
+
+    public function destroy(Club $club, Watchlist $watchlist)
+    {
+        $club->watchlists()->where('id', $watchlist->id)->delete();
+        return redirect(url()->previous() . '#list')->with('alert', 'watchlist deleted');
+    }
 }
