@@ -1,17 +1,18 @@
 <x-layout>
     <x-sidebar.home-sidebar>
-        <h1 class="font-bold underline text-lg">{{ ucwords($club->name) }}</h1>
-        <p class="mt-6 mb-6">Current members:</p>
-        @foreach ($club->users as $user)
-        <a href="/profile/{{ $user->username }}" class="hover:underline">
-            <li>{{ $user->username }}</li>
-        </a>
-        @endforeach
+        <div class="relative">
+            <h1 class="font-bold underline text-lg">{{ ucwords($club->name) }}</h1>
+            <x-progress :value="$progress" />
+            <p class="mt-6 mb-6">Current members:</p>
+            @foreach ($club->users as $user)
+            <x-user-card-hover :user="$user" />
+            @endforeach
+        </div>
+
 
         <div class="inline-flex">
             <!-- make this only for club owner with a Gate -->
-            <a href="/admin/club/{{ $club->id }}/edit" class="btn btn-outline btn-secondary mt-10 mr-4">edit club</a>
-
+            <x-link-button href="/admin/club/{{ $club->id }}/edit" class="btn-outline btn-secondary mt-10 mr-4" text="edit club" />
 
             <form method="POST" action="/invite/{{ $club->slug }}" class="">
                 @csrf
