@@ -16,16 +16,20 @@ class MediaUserController extends Controller
     public function store(User $user)
     {
         $match = $this->findIfExists(request()->name);
-        $user->media()->attach($match);
-        UpdateWatchedProfile::dispatch($user, $match);
-        return back()->with('success', 'media added');
+        if (!$user->media->contains($match->id)) {
+            $user->media()->attach($match);
+            UpdateWatchedProfile::dispatch($user, $match);
+            return back()->with('success', 'media added');
+        } else {
+            return back()->with('error', 'already watched!');
+        }
     }
 
     public function destroy(User $user, Media $media)
     {
         $user->media()->detach($media);
         ProfileRemoveWatchedUpdateWatchlist::dispatch($user, $media);
-        return back()->with('success', 'media removed');
+        return back()->with('alert', 'media removed');
     }
 
     protected function findIfExists(String $title)
