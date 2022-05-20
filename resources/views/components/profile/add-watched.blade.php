@@ -24,7 +24,7 @@
                 @endforeach
             </select>
 
-            <x-form.button class="mt-2">add to watched</x-form.button>
+            <x-form.button class="mt-2 ml-2">add to watched</x-form.button>
         </div>
 
     </div>

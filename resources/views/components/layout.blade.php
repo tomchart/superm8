@@ -46,24 +46,14 @@
                 </div>
                 @endauth
             </div>
-            <!-- <div class="navbar bg-primary text-primary-content"> -->
-            <!--     <a href="/" class="btn btn-ghost normal-case text-xl italic" hover:underline>superm8</a> -->
-            <!-- </div> -->
-            <!-- <div class="mt-8 md:mt-0 mr-6 flex items-center space-x-6"> -->
-            <!--     @auth -->
-            <!--     <a href="/account" class="hover:underline">My Account</a> -->
-            <!--     <a href="/logout" class="hover:underline">Log out</a> -->
-            <!--     @else -->
-            <!--     <a href="/login" class="hover:underline">Login</a> -->
-            <!--     <a href="/register" class="hover:underline">Register</a> -->
-            <!--     @endauth -->
-            <!-- </div> -->
-            <!---->
         </nav>
 
         {{ $slot }}
 
     </section>
+    <div class="ml-2 mr-2">
+        <x-flash />
+    </div>
 </body>
 
 </html>

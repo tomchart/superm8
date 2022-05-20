@@ -78,6 +78,8 @@ Route::get('/media/{media:id}', [MediaController::class, 'show'])->middleware(['
 //// Watchlist
 // Create new watchlist
 Route::post('/watchlist/{club:id}/create', [WatchlistController::class, 'create'])->middleware(['auth', 'member']);
+// Delete watchlist
+Route::delete('/watchlist/{club:id}/{watchlist:id}/remove', [WatchlistController::class, 'destroy'])->middleware(['auth', 'owner']);
 // Add media to Watchlist
 Route::post('/watchlist/{club:id}', [WatchlistController::class, 'update'])->middleware(['auth', 'media.exists', 'media.watchlist', 'fetch.media', 'member']);
 
