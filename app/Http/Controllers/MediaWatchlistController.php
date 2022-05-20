@@ -12,7 +12,11 @@ class MediaWatchlistController extends Controller
     {
         $watchlist->media()->updateExistingPivot($media->id, ['watched' => request()->inverse_status]);
         AddWatchedFromWatchlist::dispatch(request()->inverse_status, $watchlist->club, $media);
-        return redirect(url()->previous() . '#list');
+        if (request()->inverse_status) {
+            return redirect(url()->previous() . '#list')->with('success', 'media watched');
+        } else {
+            return redirect(url()->previous() . '#list')->with('alert', 'media unwatched');
+        }
     }
 
     public function destroy(Watchlist $watchlist, Media $media)
