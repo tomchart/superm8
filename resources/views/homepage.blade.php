@@ -3,10 +3,12 @@
     <x-sidebar.home-sidebar>
         <h1 class="mb-6 text-xl">Clubs & Watchlists</h1>
         @foreach ($clubs as $club)
-        <a href="/club/{{ $club->slug }}" class="mb-6 text-xl flex hover:underline">{{ $club->name }}</a>
         @foreach ($club->watchlists as $watchlist)
         @if ($watchlist->unwatched->count() > 0)
-        <a href="/club/{{ $club->slug }}#list" class="mb-6 text-xl flex hover:underline">{{ $watchlist->name }}</a>
+        <div class="mb-6">
+            <x-link-button href="/club/{{ $club->slug }}" class="btn-outline btn-primary" :text="$club->name" />
+            <x-link-button href="/club/{{ $club->slug }}#list" class="btn-outline btn-secondary mb-6" :text="$watchlist->name" />
+        </div>
         <div class="lg:grid lg:grid-cols-5">
             @foreach ($watchlist->unwatched as $media)
             <div class="col-span-1 mr-4 mb-6 transform transition duration-500 hover:scale-105">
@@ -21,6 +23,7 @@
 
         <div class="mb-6 border-t border-gray-600"></div>
 
+        <x-link-button href="/profile/{{ $user->username }}" class="btn-outline btn-primary mb-6" text="{{ auth()->user()->username }}'s watched" />
         <x-watched :user="$user" />
     </x-sidebar.home-sidebar>
     @else
