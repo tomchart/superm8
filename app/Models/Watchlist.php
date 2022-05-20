@@ -28,4 +28,15 @@ class Watchlist extends Model
         return $this->belongsToMany(Media::class)
             ->wherePivot('watched', '=', '0');
     }
+
+    public function watched()
+    {
+        return $this->belongsToMany(Media::class)
+            ->wherePivot('watched', '=', '1');
+    }
+
+    public function mediaCount()
+    {
+        return $this->media()->count();
+    }
 }
