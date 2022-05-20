@@ -25,4 +25,19 @@ class Club extends Model
     {
         return $this->hasMany(Watchlist::class);
     }
+
+    public function progress()
+    {
+        $totalMedia = 0;
+        $watchedMedia = 0;
+        foreach ($this->watchlists as $watchlist) {
+            $totalMedia += $watchlist->mediaCount();
+            $watchedMedia += $watchlist->watched()->count();
+        }
+        if ($watchedMedia and $totalMedia) {
+            return round($watchedMedia / $totalMedia * 100);
+        } else {
+            return 0;
+        }
+    }
 }
