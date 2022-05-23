@@ -11,4 +11,8 @@ This is a personal development project that I'm writing to improve my knowledge 
 -   user descriptions/bios and avatars
 -   user ratings (average and display these per club)
 -   ~sync user's watched with club watchlists (if all have seen, mark as watched across lists)~
--   implement daisyUI?
+-   ~implement daisyUI?~
+-   digital ocean droplet?
+-   SSL?
+-   how to deploy (docker, nginx in front?)
+-   buy domain
