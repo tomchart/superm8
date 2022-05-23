@@ -44,6 +44,12 @@
                         <li><a href="/logout">logout</a></li>
                     </ul>
                 </div>
+                @else
+                <div class="flex-none">
+                    <ul class="menu menu-horizontal p-0 mr-4">
+                        <li><a href="/login">login</a></li>
+                    </ul>
+                </div>
                 @endauth
             </div>
         </nav>

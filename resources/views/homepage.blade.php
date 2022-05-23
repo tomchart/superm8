@@ -28,8 +28,16 @@
     </x-sidebar.home-sidebar>
     @else
     <div class="text-center">
-        <p class="text-lg mt-20 mb-6">Hi there.</p>
-        <p>Please <a class="underline hover:italic" href="/login">log in</a> or <a class="underline hover:italic" href="/register">register</a> to view content.</p>
+        <div class="hero min-h-screen" style="background-image: url(/images/super8_camera.jpeg)">
+            <div class="hero-overlay bg-opacity-80"></div>
+            <div class="hero-content text-center text-neutral-content">
+                <div class="max-w-md">
+                    <h1 class="mb-5 text-5xl font-bold">Hi there!</h1>
+                    <p class="mb-5">Welcome to superm8 - the film club social network.</p>
+                    <x-link-button href="/register" class="btn-primary" text="get started" />
+                </div>
+            </div>
+        </div>
     </div>
     @endauth
 </x-layout>
