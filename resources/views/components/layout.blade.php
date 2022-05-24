@@ -20,45 +20,22 @@
 </style>
 
 <body style="font-family: Open Sans, sans-serif" class="bg-base-100 text-white">
-    <section class="">
-        <nav class="text-black">
-            <div class="navbar bg-secondary">
-                <div class="flex-1">
-                    <a href="/" class="btn btn-ghost normal-case text-xl italic ml-4">superm8</a>
-                </div>
-                @auth
-                <div class="flex-none">
-                    <ul class="menu menu-horizontal p-0 mr-4">
-                        <li tabindex="0">
-                            <a class="mr-4">
-                                {{ auth()->user()->username }}
-                                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                                </svg>
-                            </a>
-                            <ul class="p-2 bg-secondary-focus">
-                                <li><a href="/account">account information</a></li>
-                                <li><a href="/clubs">club management</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/logout">logout</a></li>
-                    </ul>
-                </div>
-                @else
-                <div class="flex-none">
-                    <ul class="menu menu-horizontal p-0 mr-4">
-                        <li><a href="/login">login</a></li>
-                    </ul>
-                </div>
-                @endauth
+    <div class="drawer">
+        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content">
+            <x-navbar />
+            @auth
+            <x-panel class="col-span-9 lg:pt-14 ml-56 mr-56 mt-6 mb-2">
+                {{ $slot }}
+            </x-panel>
+            @else
+            {{ $slot }}
+            @endauth
+            <div class="ml-2 mr-2">
+                <x-flash />
             </div>
-        </nav>
-
-        {{ $slot }}
-
-    </section>
-    <div class="ml-2 mr-2">
-        <x-flash />
+        </div>
+        <x-drawer-side />
     </div>
 </body>
 
