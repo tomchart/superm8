@@ -16,3 +16,6 @@ This is a personal development project that I'm writing to improve my knowledge 
 -   SSL?
 -   how to deploy (docker, nginx in front?)
 -   buy domain
+-   redesign club management
+-   write account management
+-   fix users editing other users watched (but its actually their own)
