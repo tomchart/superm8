@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MediaType;
 use App\Models\User;
 use App\Models\Rating;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -15,5 +16,22 @@ class ProfileController extends Controller
             'mediaTypes' => MediaType::all(),
             'ratings' => Rating::all(),
         ]);
+    }
+
+    public function update()
+    {
+        $user = auth()->user();
+        $attributes = request()->validate([
+            'name' => ['min:3', 'max:255'],
+            'username' => ['min:3', 'max:50', Rule::unique('users', 'username')->ignore($user->id)],
+            'description' => ['min:0', 'max:255'],
+        ]);
+        // need to throw something here if user inputs bad data
+        // atm just return regardless
+        foreach ($attributes as $key => $value) {
+            $user->$key = $value;
+        };
+        $user->save();
+        return redirect('/profile/' . $attributes['username'])->with('success', 'Account edited.');
     }
 }
