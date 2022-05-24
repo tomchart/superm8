@@ -4,7 +4,7 @@
         <img @click="expanded = ! expanded; hidden = ! hidden" class="relative rounded transform blur" width="150" height="250" src="{{ $media->Poster }}" />
     </div>
 </div>
-<div x-show="expanded">
+<div x-cloak x-show="expanded">
     <div class="mr-4 mb-6 transform transition duration-500 hover:scale-105">
         <x-poster :media="$media" />
     </div>
