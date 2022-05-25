@@ -66,6 +66,7 @@ Route::get('/account', [AccountController::class, 'show'])->middleware('auth');
 //// Profile
 // Show
 Route::get('/profile/{user:username}', [ProfileController::class, 'show']);
+Route::patch('/profile/{user:username}', [ProfileController::class, 'update'])->middleware('auth');
 
 //// Media User
 Route::post('/profile/{user:username}/media', [MediaUserController::class, 'store'])->middleware(['auth', 'media.exists', 'fetch.media']);

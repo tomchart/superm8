@@ -37,6 +37,5 @@
 
             <x-form.button class="mt-2 ml-4">add</x-form.button>
         </div>
-
     </div>
 </form>

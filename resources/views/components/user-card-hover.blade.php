@@ -4,11 +4,16 @@
             <a href="/profile/{{ $user->username }}">
                 <li>{{ $user->username }}</li>
             </a>
-            <div x-show="open" class="absolute card lg:card-side bg-base-100 shadow-xl w-64 h-128 -top-32">
-                <!-- <figure><img src="https://api.lorem.space/image/album?w=400&h=400" alt="Album"></figure> -->
+            <div x-show="open" class="absolute card lg:card-side bg-base-100 shadow-xl w-80 h-128 -top-32">
                 <div class="card-body">
-                    <h2 class="card-title">{{ "@" . $user->username }}</h2>
-                    <p>{{ $user->description }}</p>
+                    <div class="flex">
+                        <!-- this is flexing more than i would like but idk how to stop it -->
+                        <x-avatar :user="$user" class="flex-none" />
+                        <div class="mt-4 ml-4">
+                            <a class="card-title">{{ "@" . $user->username }}</a>
+                            <p class="text-xs">{{ $user->description }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
