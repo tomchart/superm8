@@ -1,3 +1,4 @@
+<x-avatar :user="$user" />
 <p class="text-lg">{{ $user->name }}</p>
 <p class="mb-4 italic text-sm text-gray-500">{{ '@' . $user->username }}</p>
 <p class="text-sm">{{ $user->description }}</p>
