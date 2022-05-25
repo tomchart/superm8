@@ -6,12 +6,8 @@ This is a personal development project that I'm writing to improve my knowledge 
 
 ### Todo
 
--   ~comments on media detail page~
 -   discussion board on club page
--   ~user descriptions/bios and avatars~
 -   user ratings (average and display these per club)
--   ~sync user's watched with club watchlists (if all have seen, mark as watched across lists)~
--   ~implement daisyUI?~
 -   digital ocean droplet?
 -   SSL?
 -   how to deploy (docker, nginx in front?)
@@ -19,3 +15,7 @@ This is a personal development project that I'm writing to improve my knowledge 
 -   redesign club management
 -   write account management
 -   fix users editing other users watched (but its actually their own)
+-   ~comments on media detail page~
+-   ~user descriptions/bios and avatars~
+-   ~sync user's watched with club watchlists (if all have seen, mark as watched across lists)~
+-   ~implement daisyUI?~
