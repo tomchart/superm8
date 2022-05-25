@@ -22,7 +22,6 @@
                 @endif
             </div>
         </form>
-
     </div>
 
     <x-watchlist.main>

@@ -14,6 +14,5 @@
         <div class="inline-flex col-span-4 ml-4">
             <x-form.button class="mt-2 ml-2">create</x-form.button>
         </div>
-
     </div>
 </form>
