@@ -13,6 +13,7 @@
                 <input name="name" id="name" type="text" value="{{ $user->name }}" class="input input-ghost input-bordered w-full max-w-xs text-lg mb-4 flex" />
                 <input name="username" id="username" type="text" value="{{ $user->username }}" class="input input-ghost input-bordered w-full max-w-xs mb-4 italic text-sm input-xs flex" />
                 <textarea name="description" id="description" class="textarea textarea-bordered w-full max-w-xs flex">{{ $user->description }}</textarea>
+                <input class="" type="file" name="avatar" id="avatar" />
                 <button @click="edit = ! edit; view = ! view" type="button" class="btn btn-outline btn-secondary mr-4 mt-8">cancel</button>
                 <button @click="edit = ! edit; view = ! view" type="submit" class="btn btn-outline btn-primary mr-4 mt-8">save</button>
             </form>
