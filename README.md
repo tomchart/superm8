@@ -11,7 +11,6 @@ This is a personal development project that I'm writing to improve my knowledge 
 -   SSL?
 -   how to deploy (docker, nginx in front?)
 -   buy domain
--   redesign club management
 -   write account management
 -   fix users editing other users watched (but its actually their own)
 -   ~comments on media detail page~
@@ -19,3 +18,4 @@ This is a personal development project that I'm writing to improve my knowledge 
 -   ~sync user's watched with club watchlists (if all have seen, mark as watched across lists)~
 -   ~implement daisyUI?~
 -   ~discussion board on club page~
+-   ~redesign club management~
