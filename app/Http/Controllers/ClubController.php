@@ -18,6 +18,7 @@ class ClubController extends Controller
             'mediaTypes' => MediaType::all(),
             'ratings' => Rating::all(),
             'progress' => $progress,
+            'comments' => $club->comments()->orderBy('created_at', 'DESC')->paginate(5),
         ]);
     }
 

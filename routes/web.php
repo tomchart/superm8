@@ -6,6 +6,7 @@ use App\Http\Controllers\ClubController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\InviteController;
 use App\Http\Controllers\AdminClubController;
+use App\Http\Controllers\ClubCommentController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\MediaWatchlistController;
 use App\Http\Controllers\ProfileController;
@@ -94,3 +95,6 @@ Route::delete('/watchlist/{watchlist:id}/{media:id}', [MediaWatchlistController:
 
 //// Media Comment
 Route::post('/media/{media:id}/comment', [MediaCommentController::class, 'store'])->middleware(['auth']);
+
+//// Club Comment
+Route::post('/club/{club:id}/comment', [ClubCommentController::class, 'store'])->middleware(['auth']);

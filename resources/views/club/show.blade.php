@@ -37,4 +37,18 @@
     <div class="mt-6 mb-6 border-t border-gray-600"></div>
     <x-watchlist.list :club="$club" />
 
+    <div class="lg:grid lg:grid-cols-12">
+        <section class="col-span-8" id="comments">
+            <x-comment.add :club="$club" action="/club/{{ $club->id }}/comment" />
+        </section>
+
+        <section class="col-span-8 mt-10 space-y-6">
+            @foreach ($comments as $comment)
+            <x-comment.comment :comment="$comment" />
+            @endforeach
+        </section>
+    </div>
+    <x-comment.paginator :paginator="$comments" />
+
+
 </x-layout>

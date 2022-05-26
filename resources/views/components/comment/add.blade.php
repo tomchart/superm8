@@ -8,7 +8,7 @@
     @enderror
 
     <div x-show="expanded" x-collapse>
-        <form method="POST" action="/media/{{ $media->id }}/comment">
+        <form method="POST" action="{{ $action }}">
             @csrf
             <x-form.input name="body" placeholder="enter comment..." required />
             <x-form.button>post</x-form.button>

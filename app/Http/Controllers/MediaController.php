@@ -12,7 +12,7 @@ class MediaController extends Controller
     {
         return view('media.show', [
             'media' => $media,
-            'comments' => $media->comments->sortDesc(),
+            'comments' => $media->comments()->orderBy('created_at', 'DESC')->paginate(5),
         ]);
     }
 
