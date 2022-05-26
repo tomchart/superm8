@@ -40,4 +40,9 @@ class Club extends Model
             return 0;
         }
     }
+
+    public function comments()
+    {
+        return $this->hasMany(ClubComment::class);
+    }
 }
