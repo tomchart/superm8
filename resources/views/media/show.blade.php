@@ -36,7 +36,7 @@
 
     <div class="lg:grid lg:grid-cols-12">
         <section class="col-span-8" id="comments">
-            <x-comment.add :media="$media" />
+            <x-comment.add :media="$media" action="/media/{{ $media->id }}/comment" />
         </section>
 
         <section class="col-span-8 mt-10 space-y-6">
@@ -45,6 +45,7 @@
             @endforeach
         </section>
     </div>
+    <x-comment.paginator :paginator="$comments" />
 
     @endauth
 </x-layout>
