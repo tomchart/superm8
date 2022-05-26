@@ -31,13 +31,26 @@
         <div x-cloak x-show="expanded" x-collapse>
             <x-profile.add-watched :mediaTypes="$mediaTypes" :ratings="$ratings" />
 
-            <x-table.table label="watched">
-                @foreach ($user->media as $media)
-                <x-table.row>
-                    <x-table.media :media="$media" :ratings="$ratings" />
-                    <x-table.button action="/profile/{{ $user->username }}/{{ $media->id }}" method="DELETE" text="remove" />
-                </x-table.row>
-                @endforeach
+            <x-table.table>
+                <x-slot name="head">
+                    <th></th>
+                    <th>Media Name</th>
+                    <th></th>
+                </x-slot>
+                <x-slot name="row">
+                    @foreach ($user->media as $media)
+                    <tr>
+                        <th></th>
+                        <td class="flex flex-row">
+                            <a class="hover:underline" href="/media/{{ $media->id }}">{{ $media->Title }}</a>
+                            <x-rating.rating :media="$media" class="flex flex-row px-2 py-1.5" />
+                        </td>
+                        <th>
+                            <x-table.button action="/profile/{{ $user->username }}/{{ $media->id }}" method="DELETE" btnClass="btn btn-xs btn-error" btnText="remove" />
+                        </th>
+                        @endforeach
+                    </tr>
+                </x-slot>
             </x-table.table>
 
             <div class="mt-6 mb-6 border-t border-gray-600"></div>
