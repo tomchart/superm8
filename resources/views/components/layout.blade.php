@@ -29,7 +29,7 @@
         <div class="drawer-content">
             <x-navbar />
             @auth
-            <x-panel class="col-span-9 lg:pt-14 ml-56 mr-56 mt-6 mb-2">
+            <x-panel class="lg:pt-14 ml-56 mr-56 mt-6 mb-2">
                 {{ $slot }}
             </x-panel>
             @else
