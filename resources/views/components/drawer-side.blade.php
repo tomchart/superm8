@@ -1,6 +1,6 @@
 <div class="drawer-side">
     <label for="my-drawer" class="drawer-overlay"></label>
-    <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+    <ul class="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
         <!-- Sidebar content here -->
         @auth
         <p class="mt-4 ml-2 mb-2 font-semibold">Welcome, {{ auth()->user()->name }}!</p>
