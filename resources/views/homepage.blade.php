@@ -1,5 +1,8 @@
 <x-layout>
     @auth
+    @if ($user->media->count() == 0 and $user->clubs->count() == 0)
+    <x-splash />
+    @else
     <h1 class="mb-6 text-xl">Clubs & Watchlists</h1>
     @foreach ($clubs as $club)
     @foreach ($club->watchlists as $watchlist)
@@ -24,6 +27,7 @@
 
     <x-link-button href="/profile/{{ $user->username }}" class="btn-outline btn-primary mb-6" text="{{ auth()->user()->username }}'s watched" />
     <x-watched :user="$user" />
+    @endif
     @else
     <div class="text-center">
         <div class="hero min-h-screen" style="background-image: url(/images/super8_camera.jpeg)">
