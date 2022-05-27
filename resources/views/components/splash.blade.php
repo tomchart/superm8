@@ -3,11 +3,11 @@
         <div class="hero-content flex-col lg:flex-row">
             <img src="{{ asset('storage/images/cannes-resize.jpeg') }}" class="max-w-sm rounded-lg shadow-2xl scale-50" />
             <div>
-                <h1 class="text-5xl font-bold">Welcome!</h1>
+                <h1 class="text-5xl font-bold">Uh oh!</h1>
                 <p class="py-6">You currently have no clubs or watched media 💔</p>
                 <x-link-button class="btn btn-primary btn-outline" text="Create a club" href="/club" />
-                <x-link-button class="btn btn-primary btn-outline" text="Redeem an invite" href="/redeem" />
-                <x-link-button class="btn btn-primary btn-outline" text="Add watched media" href="/profile/{{ auth()->user()->username }}" />
+                <x-link-button class="btn btn-primary btn-outline ml-2" text="Redeem an invite" href="/redeem" />
+                <x-link-button class="btn btn-primary btn-outline ml-2" text="Add watched media" href="/profile/{{ auth()->user()->username }}" />
             </div>
         </div>
     </div>
