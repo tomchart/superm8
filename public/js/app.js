@@ -2164,6 +2164,8 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./search */ "./resources/js/search.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -2180,7 +2182,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  */
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -2194,6 +2196,60 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/search.js":
+/*!********************************!*\
+  !*** ./resources/js/search.js ***!
+  \********************************/
+/***/ (() => {
+
+window.fetchData = function () {
+  //Search Value
+  var val = document.getElementById("search").value; //Search Url
+
+  var url = "/search?search=" + val;
+  fetch(url).then(function (resp) {
+    return resp.json();
+  }) //Transform the data into json
+  .then(function (data) {
+    // get table body element
+    var tbodyref = document.getElementById("tbodyfordata");
+    tbodyref.innerHTML = "";
+    var media = data; // map data from media to row
+
+    media.map(function (media) {
+      var tr = createNode("tr"),
+          title = createNode("td"),
+          year = createNode("td"),
+          director = createNode("td");
+      tr.className = "hover";
+      title.innerText = media.Title;
+      year.innerText = media.Year;
+      director.innerText = media.Director; // and append to element
+
+      append(tr, title);
+      append(tr, year);
+      append(tr, director);
+      append(tbodyref, tr); // if result clicked populate value of input field
+
+      tr.onclick = function () {
+        document.getElementById("search").value = media.Title;
+      };
+    });
+  })["catch"](function (error) {
+    console.log(error);
+  });
+};
+
+function createNode(element) {
+  return document.createElement(element);
+}
+
+function append(parent, el) {
+  return parent.appendChild(el);
+}
 
 /***/ }),
 
