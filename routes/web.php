@@ -75,6 +75,7 @@ Route::delete('/profile/{user:username}/{media:id}', [MediaUserController::class
 
 //// Media
 Route::get('/media/{media:id}', [MediaController::class, 'show'])->middleware(['auth', 'fetch.media']);
+Route::get('/search', [MediaController::class, 'index'])->name('search');
 
 
 //// Watchlist
