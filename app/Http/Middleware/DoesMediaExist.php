@@ -19,7 +19,7 @@ class DoesMediaExist
     public function handle(Request $request, Closure $next)
     {
         // search for existing Media for Title and Type provided by user
-        $title = strtolower(request()->name);
+        $title = strtolower(request()->search);
         $type = MediaType::where('id', '=', request()->type_id)->first()->type;
         $media = Media::where('Title', '=', $title)->where('Type', '=', $type)->first();
 

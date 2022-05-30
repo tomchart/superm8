@@ -33,7 +33,7 @@ class FetchMissingMediaInfo
             // validate search data
             $attributes = $this->validateSearch();
 
-            $media = $this->mediaAPI->searchTitle($attributes['name']);
+            $media = $this->mediaAPI->searchTitle($attributes['search']);
 
             // return rating from table
             $media->rating()->associate(Rating::where('id', '=', $attributes['rating_ebert'])->first());
@@ -50,7 +50,7 @@ class FetchMissingMediaInfo
     protected function validateSearch()
     {
         return request()->validate([
-            'name' => ['required', 'max:255'],
+            'search' => ['required', 'max:255'],
             'type_id' => [],
             'rating_ebert' => [],
         ]);
