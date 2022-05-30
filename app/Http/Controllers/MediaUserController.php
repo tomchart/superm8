@@ -15,7 +15,7 @@ class MediaUserController extends Controller
 
     public function store(User $user)
     {
-        $match = $this->findIfExists(request()->name);
+        $match = $this->findIfExists(request()->search);
         if (!$user->media->contains($match->id)) {
             $user->media()->attach($match);
             UpdateWatchedProfile::dispatch($user, $match);
