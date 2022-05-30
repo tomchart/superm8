@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Media;
 use App\Services\MediaAPI;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MediaController extends Controller
 {
@@ -31,5 +33,19 @@ class MediaController extends Controller
         }
 
         return back();
+    }
+
+    public function index(Request $request)
+    {
+        $data = '';
+        $search = $request->get('search');
+        if ($search != '') {
+            $data = DB::table('media')
+                ->where('Title', 'like', '%' . $search . '%')
+                ->orWhere('Director', 'like', '%' . $search . '%')
+                ->orWhere('Year', 'like', '%' . $search . '%')
+                ->get();
+        }
+        return json_encode($data);
     }
 }
