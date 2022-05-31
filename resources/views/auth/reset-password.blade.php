@@ -19,30 +19,27 @@
             <div>
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+                <x-form.input id="email" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
 
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
+                <x-form.input id="password" type="password" name="password" :value="old('password')" required autofocus />
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
                 <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
-            </div>
+                <x-form.input id="password_confirmation" type="password" name="password_confirmation" :value="old('password_confirmation')" required autofocus />
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
-            </div>
+                <div class="flex items-center justify-end mt-4">
+                    <x-button>
+                        {{ __('Reset Password') }}
+                    </x-button>
+                </div>
         </form>
     </x-auth-card>
 </x-guest-layout>

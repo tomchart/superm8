@@ -23,7 +23,7 @@
             <div>
                 <x-label for="email" :value="__('Email')" />
 
-                <x-form.input id="email" type="email" name="email" :value="old('email')" required autofocus />
+                <x-form.input id="email" type="email" name="email" required autofocus />
             </div>
 
             <div class="flex items-center justify-end mt-4">
