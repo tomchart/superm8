@@ -99,3 +99,5 @@ Route::post('/media/{media:id}/comment', [MediaCommentController::class, 'store'
 
 //// Club Comment
 Route::post('/club/{club:id}/comment', [ClubCommentController::class, 'store'])->middleware(['auth']);
+
+require __DIR__ . '/auth.php';
