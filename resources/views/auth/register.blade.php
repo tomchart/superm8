@@ -16,35 +16,35 @@
             <div>
                 <x-label for="name" :value="__('Name')" />
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <x-form.input id="name" type="name" name="name" :value="old('name')" required autofocus />
             </div>
 
             <!-- Username -->
-            <div>
+            <div class="mt-2">
                 <x-label for="username" :value="__('Username')" />
 
-                <x-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus />
+                <x-form.input id="username" type="username" name="username" :value="old('username')" required autofocus />
             </div>
 
             <!-- Email Address -->
-            <div class="mt-4">
+            <div class="mt-2">
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-form.input id="email" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
+            <div class="mt-2">
                 <x-label for="password" :value="__('Password')" />
 
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-form.input id="password" type="password" name="password" :value="old('password')" required autofocus />
             </div>
 
             <!-- Confirm Password -->
-            <div class="mt-4">
+            <div class="mt-2">
                 <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
+                <x-form.input id="password_confirmation" type="password" name="password_confirmation" :value="old('password_confirmation')" required autofocus />
             </div>
 
             <div class="flex items-center justify-end mt-4">
