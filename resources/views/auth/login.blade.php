@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500 transform transition duration-500 hover:scale-105" />
             </a>
         </x-slot>
 
@@ -37,16 +37,16 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end mt-2">
                 @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-100 hover:text-gray-300" href="{{ route('password.request') }}">
+                <a class="underline text-sm text-gray-100 hover:text-gray-300 mt-4" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
                 @endif
 
-                <x-button class="ml-3">
+                <x-form.button class="ml-3 inline-flex items-center">
                     {{ __('Log in') }}
-                </x-button>
+                </x-form.button>
             </div>
         </form>
     </x-auth-card>

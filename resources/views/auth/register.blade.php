@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500 transform transition duration-500 hover:scale-105" />
             </a>
         </x-slot>
 
@@ -47,14 +47,14 @@
                 <x-form.input id="password_confirmation" type="password" name="password_confirmation" :value="old('password_confirmation')" required autofocus />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+            <div class="flex items-center justify-end mt-2">
+                <a class="underline text-sm text-gray-100 hover:text-gray-300 mt-4" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4">
+                <x-form.button class="ml-3 inline-flex items-center">
                     {{ __('Register') }}
-                </x-button>
+                </x-form.button>
             </div>
         </form>
     </x-auth-card>
