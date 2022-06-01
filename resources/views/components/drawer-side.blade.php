@@ -21,7 +21,7 @@
         <li><a href="/clubs">Club Management</a></li>
 
         @else
-        <p>Please log in to view content.</p>
+        <p>Please <a href="/login" class="underline">log in</a> to view content.</p>
 
         @endauth
 
