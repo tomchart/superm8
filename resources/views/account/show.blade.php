@@ -1,5 +1,5 @@
 <x-layout>
     @auth
-    <p>account info</p>
+    <p>under construction</p>
     @endauth
 </x-layout>

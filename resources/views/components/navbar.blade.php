@@ -22,14 +22,14 @@
                 </label>
                 <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-secondary rounded-box w-52">
                     <li><a href="/profile/{{ auth()->user()->username }}">My Profile</a></li>
-                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/logout">Log out</a></li>
                 </ul>
             </div>
         </div>
         @else
         <div class="flex-none">
             <ul class="menu menu-horizontal p-0 mr-4">
-                <li><a href="/login">login</a></li>
+                <li><a href="/login">Log in</a></li>
             </ul>
         </div>
         @endauth
