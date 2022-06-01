@@ -7,10 +7,7 @@ This is a personal development project that I'm writing to improve my knowledge 
 ### Todo
 
 -   user ratings (average and display these per club)
--   digital ocean droplet?
--   SSL?
 -   how to deploy (docker, nginx in front?)
--   buy domain
 -   write account management
 -   fix users editing other users watched (but its actually their own)
 -   ~comments on media detail page~
@@ -19,3 +16,6 @@ This is a personal development project that I'm writing to improve my knowledge 
 -   ~implement daisyUI?~
 -   ~discussion board on club page~
 -   ~redesign club management~
+-   ~digital ocean droplet?~
+-   ~SSL?~
+-   ~buy domain~
