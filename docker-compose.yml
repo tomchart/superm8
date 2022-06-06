@@ -10,9 +10,9 @@ services:
     image: superm8
     container_name: superm8-app
     restart: unless-stopped
-    working_dir: /var/www/
+    working_dir: /var/www/superm8
     volumes:
-      - ./:/var/www
+      - ./:/var/www/superm8
     networks:
       - superm8
 
