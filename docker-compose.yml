@@ -10,9 +10,9 @@ services:
     image: superm8
     container_name: superm8-app
     restart: unless-stopped
-    working_dir: /var/www/superm8
+    working_dir: /var/www/html/
     volumes:
-      - ./:/var/www/superm8
+      - ./:/var/www/html
     networks:
       - superm8
 
@@ -39,7 +39,7 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ./:/var/www/superm8/
+      - ./:/var/www/html
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
       - superm8
