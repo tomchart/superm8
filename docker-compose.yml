@@ -1,49 +1,66 @@
-version: "3.3"
+version: '3'
 services:
-  superm8:
+  
+  #PHP Service
+  app:
     build:
-      args:
-        user: tom
-        uid: 1000
-      context: ./
+      context: .
       dockerfile: Dockerfile
-    image: superm8
-    container_name: superm8-app
+    image: digitalocean.com/php
+    container_name: app
     restart: unless-stopped
-    working_dir: /var/www/html/
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
-      - superm8
+      - app-network
 
-  db:
-    image: mysql:5.7
-    container_name: superm8-db
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
     restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+
+  #MySQL Service
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
-      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - dbdata:/var/lib/mysql/
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
     networks:
-      - superm8
+      - app-network
 
-  nginx:
-    image: nginx:alpine
-    container_name: superm8-nginx
-    restart: unless-stopped
-    ports:
-      - 8000:80
-    volumes:
-      - ./:/var/www/html
-      - ./docker-compose/nginx:/etc/nginx/conf.d/
-    networks:
-      - superm8
-
+#Docker Networks
 networks:
-  superm8:
+  app-network:
     driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
