@@ -7,7 +7,6 @@ This is a personal development project that I'm writing to improve my knowledge 
 ### Todo
 
 -   user ratings (average and display these per club)
--   how to deploy (docker, nginx in front?)
 -   write account management
 -   fix users editing other users watched (but its actually their own)
 -   ~comments on media detail page~
@@ -19,3 +18,4 @@ This is a personal development project that I'm writing to improve my knowledge 
 -   ~digital ocean droplet?~
 -   ~SSL?~
 -   ~buy domain~
+-   ~how to deploy (docker, nginx in front?)~
