@@ -10,11 +10,8 @@
         <span class="text-xs text-red-500">{{ $message }}</span>
         @enderror
 
-        <div class="inline-flex col-span-4 ml-4">
-            <button type="submit" class="text-xs hover:underline focus:underline text-red-300">
-                delete
-            </button>
+        <div class="inline-flex col-span-4 ml-4 mt-2 mb-2">
+            <button class="btn btn-xs btn-error">remove</button>
         </div>
-
     </div>
 </form>
