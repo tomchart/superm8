@@ -35,7 +35,41 @@
     </x-watchlist.main>
 
     <div class="mt-6 mb-6 border-t border-gray-600"></div>
-    <x-watchlist.list :club="$club" />
+
+    @foreach ($club->watchlists as $watchlist)
+    <h3 class="underline font-semibold mb-4 mt-4" id="list">{{ $watchlist->name }}</h3>
+    <x-table.table>
+        <x-slot name="head">
+            <th></th>
+            <th>Title</th>
+            <th></th>
+            <th></th>
+        </x-slot>
+        <x-slot name="row">
+            @foreach ($watchlist->media as $media)
+            <tr>
+                <th></th>
+                <td>
+                    <div class="inline-flex">
+                        <a class="hover:underline {{ $media->pivot->watched == 1 ? 'text-gray-400 line-through' : '' }}"
+                            href="/media/{{ $media->id }}">{{ $media->Title }}
+                        </a>
+                        <x-rating.rating :media="$media" class="flex flex-row px-2 py-1.5" />
+                    </div>
+                </td>
+                <th>
+                    <x-table.media-watched-button :watchlist="$watchlist" :media="$media" />
+                </th>
+                <th>
+                    <x-table.remove-media-button :watchlist="$watchlist" :media="$media" />
+                </th>
+            </tr>
+            @endforeach
+        </x-slot>
+    </x-table.table>
+    @endforeach
+
+    <div class="mt-6 mb-6 border-t border-gray-600"></div>
 
     <div class="lg:grid lg:grid-cols-12">
         <section class="col-span-8" id="comments">
