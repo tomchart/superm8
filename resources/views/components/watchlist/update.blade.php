@@ -23,7 +23,7 @@
                     @endforeach
                 </select>
 
-                <select name="rating_ebert" id="rating_ebert" class="select bg-secondary mt-8 mr-2 ml-4">
+                <select name="rating_ebert" id="rating_ebert" class="select bg-error mt-8 mr-2 ml-4">
                     <option disabled selected hidden>rating</option>
                     <option value="">unrated</option>
                     @foreach ($ratings as $rating)
