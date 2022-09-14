@@ -15,32 +15,29 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MediaUserController;
 use Illuminate\Support\Facades\Route;
 
-//// Homepage
+// Homepage
 Route::get('/', [HomepageController::class, 'show']);
 Route::get('/home', [HomepageController::class, 'show']);
 
 
-//// Clubs
-// View detail page
+// Club user
 Route::get('/club/{club:slug}', [ClubController::class, 'show'])->middleware(['auth', 'member']);
-// Index current clubs
 Route::get('/clubs', [ClubController::class, 'index'])->middleware(['auth']);
 
 
-//// Club administration
-// Create new club
-Route::get('/club', [AdminClubController::class, 'create'])->middleware('auth');
-Route::post('/club', [AdminClubController::class, 'store'])->middleware('auth');
-// Edit club
-Route::get('/admin/club/{club:id}/edit', [AdminClubController::class, 'show'])->middleware(['auth', 'owner']);
-Route::patch('/admin/club/{club:id}', [AdminClubController::class, 'update'])->middleware(['auth', 'owner']);
-// Delete club
-Route::delete('/admin/club/{club:id}', [AdminClubController::class, 'destroy'])->middleware(['auth', 'owner']);
-// Remove user from club
-Route::delete('/admin/club/{club:id}/{user:id}', [ClubUserController::class, 'destroy'])->middleware(['auth', 'owner']);
+// Club administration
+Route::middleware('auth')->group(function () {
+  Route::get('/club', [AdminClubController::class, 'create']);
+  Route::post('/club', [AdminClubController::class, 'store']);
+});
+Route::middleware(['auth', 'owner'])->group(function () {
+  Route::get('/admin/club/{club:id}/edit', [AdminClubController::class, 'show']);
+  Route::patch('/admin/club/{club:id}', [AdminClubController::class, 'update']);
+  Route::delete('/admin/club/{club:id}', [AdminClubController::class, 'destroy']);
+  Route::delete('/admin/club/{club:id}/{user:id}', [ClubUserController::class, 'destroy']);
+});
 
-
-//// Invites
+// Invites
 Route::middleware('auth')->group(function () {
     Route::post('/invite/{club:slug}', [InviteController::class, 'store']);
     Route::get('/redeem', [InviteController::class, 'show']);
@@ -48,13 +45,13 @@ Route::middleware('auth')->group(function () {
 });
 
 
-//// Account
+/// Account
 // Show
-Route::get('/account', [AccountController::class, 'show'])->middleware('auth');
+Route::get('/account', [AccountController::class, 'show'])->middleware('auth'); // never finished this page
 
 //// Profile
 // Show
-Route::get('/profile/{user:username}', [ProfileController::class, 'show']);
+Route::get('/profile/{user:username}', [ProfileController::class, 'show']); // why no middleware here?
 Route::patch('/profile/{user:username}', [ProfileController::class, 'update'])->middleware('auth');
 
 //// Media User
@@ -75,17 +72,16 @@ Route::delete('/watchlist/{club:id}/{watchlist:id}/remove', [WatchlistController
 Route::post('/watchlist/{club:id}', [WatchlistController::class, 'update'])->middleware(['auth', 'media.exists', 'media.watchlist', 'fetch.media', 'member']);
 
 
-//// Media watchlist
-// Mark as watched
-// fix middleware again
-Route::patch('/watchlist/{watchlist:id}/{media:id}', [MediaWatchlistController::class, 'update'])->middleware(['auth']);
-Route::delete('/watchlist/{watchlist:id}/{media:id}', [MediaWatchlistController::class, 'destroy'])->middleware(['auth']);
+// Media watchlist - toggle watch state of $media in $watchlist
+Route::middleware('auth')->group(function () {
+  Route::patch('/watchlist/{watchlist:id}/{media:id}', [MediaWatchlistController::class, 'update']);
+  Route::delete('/watchlist/{watchlist:id}/{media:id}', [MediaWatchlistController::class, 'destroy']);
+});
 
-
-//// Media Comment
-Route::post('/media/{media:id}/comment', [MediaCommentController::class, 'store'])->middleware(['auth']);
-
-//// Club Comment
-Route::post('/club/{club:id}/comment', [ClubCommentController::class, 'store'])->middleware(['auth']);
+// Comments - media & club
+Route::middleware('auth')->group(function () {
+  Route::post('/media/{media:id}/comment', [MediaCommentController::class, 'store']);
+  Route::post('/club/{club:id}/comment', [ClubCommentController::class, 'store']);
+});
 
 require __DIR__ . '/auth.php';

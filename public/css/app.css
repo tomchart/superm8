@@ -3828,9 +3828,6 @@ body[dir="rtl"] .checkbox:checked,
 .max-w-lg {
   max-width: 32rem;
 }
-.flex-initial {
-  flex: 0 1 auto;
-}
 .flex-none {
   flex: none;
 }
@@ -4023,6 +4020,10 @@ body[dir="rtl"] .checkbox:checked,
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+.bg-error {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--er) / var(--tw-bg-opacity));
 }
 .bg-opacity-80 {
   --tw-bg-opacity: 0.8;
@@ -4617,10 +4618,6 @@ body[dir="rtl"] .checkbox:checked,
 
   .lg\:grid {
     display: grid;
-  }
-
-  .lg\:w-64 {
-    width: 16rem;
   }
 
   .lg\:w-32 {

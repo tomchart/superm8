@@ -20,7 +20,7 @@
                         </svg>
                     </a>
                 </label>
-                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-secondary rounded-box w-52">
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow shadow-lg bg-secondary rounded-box w-52">
                     <li><a href="/profile/{{ auth()->user()->username }}">My Profile</a></li>
                     <li><a href="/logout">Log out</a></li>
                 </ul>
