@@ -36,4 +36,10 @@ return [
         'key' => env('OMDB_SECRET_KEY')
     ],
 
+    'cse' => [
+      'base_uri' => env('CSE_BASE_URI'),
+      'cx' => env('CSE_CX'),
+      'key' => env('CSE_SECRET_KEY')
+  ]
+
 ];
