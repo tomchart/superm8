@@ -44,6 +44,7 @@ return new class extends Migration
             $table->string("Website")->nullable();
             $table->string("totalSeasons")->nullable();
             $table->string("Response");
+            $table->string("ebert_review")->nullable();
             $table->timestamps();
         });
     }
