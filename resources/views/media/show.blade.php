@@ -6,7 +6,8 @@
         <div class="col-span-8 mr-8">
             <p class="text-xl mb-2">{{ $media->Title }}</p>
             @if ($media->rating_ebert)
-            <x-rating.rating :media="$media" class="flex flex-row mb-2" />
+            <!-- unsure about where i want the ebert review to be linked atm -->
+            <a href="{{ $media->ebert_review }}"><x-rating.rating :media="$media" class="flex flex-row mb-2" /></a>
             @endif
             <p class="mb-4 text-sm text-gray-400">{{ $media->Year . ' - ' . $media->Rated . ' - ' . $media->Runtime  }}</p>
 
@@ -23,6 +24,8 @@
             <div class="mt-6 mb-6 border-t border-gray-600"></div>
 
             <x-ratings :media="$media" />
+            <!-- maybe here? -->
+            <a class="text-sm mt-2 hover:underline" href={{ $media->ebert_review }}>Roger Ebert review</a>
 
         </div>
 
