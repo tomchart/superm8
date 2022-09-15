@@ -9,6 +9,17 @@
 </a>
 @endif
 
+@if ($media->ebert_review)
+<a class="flex inline" href="{{ $media->ebert_review }}">
+    <div class="flex inline-flex mb-2">
+      <x-icons name="ebert" />
+      <div class="ml-2">
+        <x-rating.rating :media="$media" class="flex flex-row" />
+      </div>
+    </div>
+</a>
+@endif
+
 @if ($media->rottenTomatoesRating)
 <div class="flex inline">
     <x-icons name="tomato" href="make this link to film on rt?" />
