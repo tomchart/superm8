@@ -26,7 +26,7 @@ class MediaCommentController extends Controller
             'body' => $attributes['body']
         ]);
 
-        return redirect(url()->previous().'#comments')->with('comment', 'posted!');
+        return redirect(url()->previous().'#comments')->with('success', 'Comment posted!');
 
     }
 }
