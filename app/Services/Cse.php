@@ -48,6 +48,6 @@ class Cse implements EbertApi
         } else {
           $ebertRating = $fullStars;
         }
-        return [$link, $ebertRating];
+        return [$link, strval($ebertRating)];
     }
 }

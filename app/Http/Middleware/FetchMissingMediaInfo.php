@@ -39,15 +39,15 @@ class FetchMissingMediaInfo
             [$link, $ebertRating] = $this->ebertApi->searchTitle($attributes['search']);
 
             $starsToRatingKeys = [
-              0 => 1,
-              0.5 => 2,
-              1 => 3,
-              1.5 => 4,
-              2 => 5,
-              2.5 => 6,
-              3 => 7,
-              3.5 => 8,
-              4 => 9,
+              "0" => 1,
+              "0.5" => 2,
+              "1" => 3,
+              "1.5" => 4,
+              "2" => 5,
+              "2.5" => 6,
+              "3" => 7,
+              "3.5" => 8,
+              "4" => 9,
             ];
             $ebertKey = $starsToRatingKeys[$ebertRating];
 
