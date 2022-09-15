@@ -27,7 +27,9 @@
         </div>
 
         <div class="col-span-4 ml-6">
-            <img width="85%" height="85%" src="{{ $media->Poster }}" />
+      <a href="https://www.imdb.com/title/{{ $media->imdbID }}">
+        <img width="85%" height="85%" src="{{ $media->Poster }}" class="transform transition duration-500 hover:scale-105" />
+      </a>
         </div>
 
     </div>
