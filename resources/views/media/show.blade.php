@@ -24,9 +24,6 @@
             <div class="mt-6 mb-6 border-t border-gray-600"></div>
 
             <x-ratings :media="$media" />
-            <!-- maybe here? -->
-            <a class="text-sm mt-2 hover:underline" href={{ $media->ebert_review }}>Roger Ebert review</a>
-
         </div>
 
         <div class="col-span-4 ml-6">
